@@ -140,10 +140,10 @@ body {
     gap: 25px;
 }
 
-/* --- TARJETAS (FIX REAL) --- */
+/* --- TARJETAS (FIX DEFINITIVO) --- */
 .play-card {
     width: 100%;
-    aspect-ratio: 3 / 4; /* 🔥 reemplaza height fija */
+    aspect-ratio: 3 / 4;
     perspective: 1000px;
     cursor: pointer;
 }
@@ -154,6 +154,7 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.7s ease;
+    overflow: hidden; /* 🔥 evita bugs de render en móvil */
 }
 
 /* FLIP */
@@ -171,6 +172,10 @@ body {
     overflow: hidden;
     backface-visibility: hidden;
     border: 3px solid var(--oro);
+
+    display: flex; /* 🔥 centra contenido */
+    align-items: center;
+    justify-content: center;
 }
 
 /* FRONT */
@@ -181,7 +186,11 @@ body {
 .play-card-front img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 🔥 NO corta imagen */
+
+    object-fit: contain;
+    object-position: center;
+
+    transform: scale(1); /* 🔥 evita zoom en móvil */
     background: black;
 }
 
@@ -189,13 +198,18 @@ body {
 .play-card-back {
     transform: rotateY(180deg);
     background: #000;
-    display: flex;
 }
 
 .play-card-back video {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 🔥 NO deforma video */
+
+    object-fit: contain;
+    object-position: center;
+
+    transform: scale(1); /* 🔥 evita zoom */
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /* NAME */
