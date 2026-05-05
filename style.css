@@ -6,190 +6,137 @@
     --blanco: #ffffff;
 }
 
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-    font-family: 'Segoe UI', sans-serif; 
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 
-html, body {
-    width: 100%;
-    overflow-x: hidden; /* Evita el scroll horizontal */
-    background-color: var(--crema);
-}
+body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; }
 
 /* --- ESTRUCTURA --- */
-.web-container {
-    display: flex;
-    min-height: 100vh;
-}
+.web-container { display: flex; min-height: 100vh; }
 
 /* --- SIDEBAR (LAPTOP) --- */
 .sidebar {
     width: 250px;
     background-color: var(--guinda);
+    color: var(--oro);
     display: flex;
     flex-direction: column;
     padding: 20px;
-    position: fixed; /* Se queda fija a la izquierda */
+    position: fixed;
     height: 100vh;
+    z-index: 2000;
+    transition: transform 0.3s ease;
 }
 
 .nav-item {
-    padding: 15px; 
-    margin: 10px 0; 
-    cursor: pointer;
-    display: flex; 
-    align-items: center; 
-    font-weight: bold;
-    text-transform: uppercase; 
-    border-radius: 8px; 
-    transition: 0.3s;
-    color: var(--oro); 
-    text-decoration: none;
+    padding: 15px; margin: 10px 0; cursor: pointer;
+    display: flex; align-items: center; font-weight: bold;
+    text-transform: uppercase; border-radius: 8px; transition: 0.3s;
+    color: var(--oro); text-decoration: none;
 }
 
 .nav-item i { margin-right: 15px; font-size: 1.2rem; width: 25px; text-align: center; }
 .nav-item:hover, .nav-item.active { background-color: rgba(212, 163, 86, 0.2); border-left: 5px solid var(--oro); }
 
-/* --- CONTENIDO (LAPTOP) --- */
-.main-content {
-    flex: 1;
-    margin-left: 250px; /* Deja espacio para la sidebar fija */
-    padding: 40px;
+/* --- BOTÓN HAMBURGUESA (OCULTO EN PC) --- */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 3000;
+    background: var(--guinda);
+    color: var(--oro);
+    border: 2px solid var(--oro);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content { 
+    flex: 1; 
+    margin-left: 250px; 
+    padding: 40px; 
     width: calc(100% - 250px);
 }
 
-.header-web {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 40px;
-}
+.header-web { display: flex; align-items: center; margin-bottom: 40px; gap: 30px; }
+.header-web img { width: 150px; border-radius: 15px; }
 
-.header-web img {
-    width: 150px;
-    border-radius: 15px;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-}
-
-.header-web h1 {
-    font-size: 5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    font-family: 'Impact', sans-serif;
+.header-web h1 { 
+    font-size: 5rem; font-weight: 900; text-transform: uppercase;
+    font-family: 'Impact', sans-serif; 
     background: linear-gradient(to bottom, #ffffff, #d4a356);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     filter: drop-shadow(2px 2px 0px var(--guinda));
 }
 
-/* --- GRID --- */
+/* --- GRID DE JUGADAS --- */
 .playbook-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 30px;
 }
 
-.play-card {
-    width: 100%;
-    height: 400px;
-    perspective: 1000px;
-}
-
-.play-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
+.play-card { width: 100%; height: 400px; perspective: 1000px; }
+.play-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
 .play-card:hover .play-card-inner { transform: rotateY(180deg); }
 
 .play-card-front, .play-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    border: 3px solid var(--oro);
+    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+    border-radius: 15px; border: 3px solid var(--oro); overflow: hidden;
 }
 
 .play-card-front { background: #1a1a1a; display: flex; align-items: center; justify-content: center; }
 .play-card-front img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
 
 .play-name {
-    position: absolute;
-    bottom: 0; width: 100%;
-    background: var(--guinda); color: var(--oro);
-    padding: 10px; text-align: center; font-weight: bold;
+    position: absolute; bottom: 0; width: 100%; background: var(--guinda); 
+    color: var(--oro); padding: 10px; font-weight: bold; text-align: center;
 }
 
-/* ============================================================
-   --- RESPONSIVO: MODO CELULAR ---
-   ============================================================ */
+/* --- REGLAMENTO --- */
+.rules-container { background-color: var(--guinda); padding: 30px; border-radius: 20px; color: var(--blanco); }
+.rule-card-web { background: var(--blanco); color: var(--negro); margin-bottom: 15px; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px; }
+.rule-number { background: var(--oro); color: var(--guinda); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; }
 
-@media (max-width: 768px) {
-    /* 1. Quitamos la sidebar lateral y la pasamos abajo */
+/* ==========================================
+   --- MODO MOVIL (HAMBURGUESA + 1 COL) --- 
+   ========================================== */
+
+@media (max-width: 850px) {
+    .menu-toggle { display: block; } /* Mostrar hamburguesa */
+
     .sidebar {
-        width: 100%;
-        height: 60px;
-        flex-direction: row;
-        bottom: 0;
-        top: auto;
-        left: 0;
-        padding: 0;
-        justify-content: space-around;
-        align-items: center;
-        border-top: 3px solid var(--oro);
+        transform: translateX(-100%); /* Esconder menú */
+        width: 260px;
     }
 
-    .nav-item {
-        margin: 0;
-        padding: 5px;
-        flex-direction: column;
-        font-size: 0.6rem;
-        border-left: none !important;
+    .sidebar.active {
+        transform: translateX(0); /* Mostrar al dar clic */
+        box-shadow: 10px 0 30px rgba(0,0,0,0.5);
     }
 
-    .nav-item i {
-        margin-right: 0;
-        font-size: 1.2rem;
-    }
-
-    /* 2. El contenido ahora ocupa TODO el ancho */
     .main-content {
         margin-left: 0;
         width: 100%;
-        padding: 20px;
-        padding-bottom: 80px; /* Espacio para que el menú de abajo no tape nada */
+        padding: 80px 15px 20px 15px; /* Más espacio arriba para el botón */
     }
 
-    /* 3. Ajustamos el título gigante */
-    .header-web {
-        flex-direction: column;
-        text-align: center;
-    }
+    .header-web { flex-direction: column; text-align: center; gap: 15px; }
+    .header-web h1 { font-size: 2.5rem; }
+    .header-web img { width: 120px; }
 
-    .header-web h1 {
-        font-size: 2.2rem; /* Mucho más pequeño para móvil */
-        line-height: 1;
-    }
-
-    .header-web img {
-        width: 100px;
-    }
-
-    /* 4. Grid de 1 sola columna en móvil */
+    /* FORZAR UNA SOLA COLUMNA PARA JUGADAS GRANDES */
     .playbook-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; 
     }
 
     .play-card {
+        height: 350px;
         max-width: 100%;
-        height: 320px;
     }
+
+    .rule-card-web { flex-direction: column; text-align: center; }
 }
