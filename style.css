@@ -6,14 +6,29 @@
     --blanco: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; }
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--crema);
+    color: var(--negro);
+}
 
 /* --- ESTRUCTURA --- */
-.web-container { display: flex; min-height: 100vh; }
+.web-container {
+    display: flex;
+    min-height: 100vh;
+}
 
-/* --- SIDEBAR (LAPTOP) --- */
+/* --- SIDEBAR --- */
 .sidebar {
     width: 250px;
     background-color: var(--guinda);
@@ -23,21 +38,40 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
     padding: 20px;
     position: fixed;
     height: 100vh;
+    left: 0;
+    top: 0;
     z-index: 2000;
     transition: transform 0.3s ease;
 }
 
+/* NAV ITEMS */
 .nav-item {
-    padding: 15px; margin: 10px 0; cursor: pointer;
-    display: flex; align-items: center; font-weight: bold;
-    text-transform: uppercase; border-radius: 8px; transition: 0.3s;
-    color: var(--oro); text-decoration: none;
+    padding: 15px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: 0.3s;
+    color: var(--oro);
+    text-decoration: none;
 }
 
-.nav-item i { margin-right: 15px; font-size: 1.2rem; width: 25px; text-align: center; }
-.nav-item:hover, .nav-item.active { background-color: rgba(212, 163, 86, 0.2); border-left: 5px solid var(--oro); }
+.nav-item i {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    width: 25px;
+    text-align: center;
+}
 
-/* --- BOTÓN HAMBURGUESA (OCULTO EN PC) --- */
+.nav-item:hover,
+.nav-item.active {
+    background-color: rgba(212, 163, 86, 0.2);
+    border-left: 5px solid var(--oro);
+}
+
+/* --- BOTÓN HAMBURGUESA --- */
 .menu-toggle {
     display: none;
     position: fixed;
@@ -54,108 +88,196 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
 }
 
 /* --- CONTENIDO PRINCIPAL --- */
-.main-content { 
-    flex: 1; 
-    margin-left: 250px; 
-    padding: 40px; 
-    width: calc(100% - 250px);
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 40px;
+    width: 100%; /* 🔥 FIX CLAVE */
+    position: relative;
+    z-index: 1;
 }
 
-.header-web { display: flex; align-items: center; margin-bottom: 40px; gap: 30px; }
-.header-web img { width: 150px; border-radius: 15px; }
+/* HEADER */
+.header-web {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 30px;
+}
 
-.header-web h1 { 
-    font-size: 5rem; font-weight: 900; text-transform: uppercase;
-    font-family: 'Impact', sans-serif; 
+.header-web img {
+    width: 150px;
+    border-radius: 15px;
+}
+
+.header-web h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: 'Impact', sans-serif;
     background: linear-gradient(to bottom, #ffffff, #d4a356);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     filter: drop-shadow(2px 2px 0px var(--guinda));
 }
 
-/* --- GRID DE JUGADAS --- */
+/* --- GRID --- */
 .playbook-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
 }
 
-.play-card { width: 100%; height: 400px; perspective: 1000px; }
-.play-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
-.play-card:hover .play-card-inner { transform: rotateY(180deg); }
-
-.play-card-front, .play-card-back {
-    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-    border-radius: 15px; border: 3px solid var(--oro); overflow: hidden;
+.play-card {
+    width: 100%;
+    height: 400px;
+    perspective: 1000px;
 }
 
-.play-card-front { background: #1a1a1a; display: flex; align-items: center; justify-content: center; }
-.play-card-front img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+.play-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.play-card:hover .play-card-inner {
+    transform: rotateY(180deg);
+}
+
+.play-card-front,
+.play-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    border: 3px solid var(--oro);
+    overflow: hidden;
+}
+
+.play-card-front {
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+}
 
 .play-name {
-    position: absolute; bottom: 0; width: 100%; background: var(--guinda); 
-    color: var(--oro); padding: 10px; font-weight: bold; text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: var(--guinda);
+    color: var(--oro);
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
 }
 
 /* --- REGLAMENTO --- */
-.rules-container { background-color: var(--guinda); padding: 30px; border-radius: 20px; color: var(--blanco); }
-.rule-card-web { background: var(--blanco); color: var(--negro); margin-bottom: 15px; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px; }
-.rule-number { background: var(--oro); color: var(--guinda); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; }
+.rules-container {
+    background-color: var(--guinda);
+    padding: 30px;
+    border-radius: 20px;
+    color: var(--blanco);
+}
+
+.rule-card-web {
+    background: var(--blanco);
+    color: var(--negro);
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.rule-number {
+    background: var(--oro);
+    color: var(--guinda);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+}
 
 /* ==========================================
-   --- MODO MOVIL (HAMBURGUESA + 1 COL) --- 
+   📱 MODO MÓVIL
    ========================================== */
-.sidebar {
-    left: 0;
-    top: 0;
-}
-
-html, body {
-    overflow-x: hidden;
-}
 @media (max-width: 850px) {
 
-    .sidebar.active::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 260px;
-    width: calc(100% - 260px);
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-    pointer-events: none;
+    .menu-toggle {
+        display: block;
     }
 
-    .menu-toggle { display: block; } /* Mostrar hamburguesa */
+    .web-container {
+        flex-direction: column;
+    }
 
     .sidebar {
-        transform: translateX(-100%); /* Esconder menú */
+        transform: translateX(-100%);
         width: 260px;
     }
 
     .sidebar.active {
-        transform: translateX(0); /* Mostrar al dar clic */
+        transform: translateX(0);
         box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    /* Overlay */
+    .sidebar.active::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 260px;
+        width: calc(100% - 260px);
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        pointer-events: none;
     }
 
     .main-content {
         margin-left: 0;
         width: 100%;
-        padding: 80px 15px 20px 15px; /* Más espacio arriba para el botón */
+        padding: 80px 15px 20px 15px;
     }
 
-    .header-web { flex-direction: column; text-align: center; gap: 15px; }
-    .header-web h1 { font-size: 2.5rem; }
-    .header-web img { width: 120px; }
+    .header-web {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
 
-    /* FORZAR UNA SOLA COLUMNA PARA JUGADAS GRANDES */
+    .header-web h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-web img {
+        width: 120px;
+    }
+
     .playbook-grid {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
     }
 
     .play-card {
         height: 350px;
-        max-width: 100%;
     }
 
-    .rule-card-web { flex-direction: column; text-align: center; }
+    .rule-card-web {
+        flex-direction: column;
+        text-align: center;
+    }
 }
