@@ -6,27 +6,11 @@
     --blanco: #ffffff;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-html, body {
-    overflow-x: hidden;
-}
-
-body {
-    background-color: var(--crema);
-    color: var(--negro);
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+html, body { overflow-x: hidden; background-color: var(--crema); color: var(--negro); }
 
 /* --- ESTRUCTURA --- */
-.web-container {
-    display: flex;
-    min-height: 100vh;
-}
+.web-container { display: flex; min-height: 100vh; }
 
 /* --- SIDEBAR --- */
 .sidebar {
@@ -38,279 +22,127 @@ body {
     padding: 20px;
     position: fixed;
     height: 100vh;
-    left: 0;
-    top: 0;
-    z-index: 2000;
-    transform: translateX(0);
+    left: 0; top: 0; z-index: 2000;
     transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* NAV ITEMS */
 .nav-item {
-    padding: 15px;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 8px;
-    transition: all 0.25s ease;
-    color: var(--oro);
-    text-decoration: none;
+    padding: 15px; margin: 10px 0; display: flex; align-items: center;
+    font-weight: bold; text-transform: uppercase; border-radius: 8px;
+    transition: all 0.25s ease; color: var(--oro); text-decoration: none;
 }
 
-.nav-item i {
-    margin-right: 15px;
-    font-size: 1.2rem;
-    width: 25px;
-    text-align: center;
-}
-
-.nav-item:hover,
-.nav-item.active {
-    background-color: rgba(212, 163, 86, 0.2);
-    border-left: 5px solid var(--oro);
-    transform: scale(0.95);
-}
+.nav-item i { margin-right: 15px; font-size: 1.2rem; width: 25px; text-align: center; }
+.nav-item:hover, .nav-item.active { background-color: rgba(212, 163, 86, 0.2); border-left: 5px solid var(--oro); transform: scale(1.02); }
 
 /* --- BOTÓN HAMBURGUESA --- */
 .menu-toggle {
-    display: none;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 3000;
-    background: var(--guinda);
-    color: var(--oro);
-    border: 2px solid var(--oro);
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 1.5rem;
-    cursor: pointer;
+    display: none; position: fixed; top: 15px; left: 15px; z-index: 3000;
+    background: var(--guinda); color: var(--oro); border: 2px solid var(--oro);
+    padding: 12px; border-radius: 8px; font-size: 1.5rem; cursor: pointer;
 }
 
 /* --- CONTENIDO PRINCIPAL --- */
-.main-content {
-    flex: 1;
-    margin-left: 260px;
-    padding: 40px;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-}
+.main-content { flex: 1; margin-left: 260px; padding: 40px; width: 100%; position: relative; z-index: 1; }
 
-/* HEADER */
-.header-web {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-    gap: 30px;
-}
-
-.header-web img {
-    width: 150px;
-    border-radius: 15px;
-}
-
+.header-web { display: flex; align-items: center; margin-bottom: 40px; gap: 30px; }
+.header-web img { width: 150px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 .header-web h1 {
-    font-size: 5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    font-family: 'Impact', sans-serif;
+    font-size: 5rem; font-weight: 900; text-transform: uppercase; font-family: 'Impact', sans-serif;
     background: linear-gradient(to bottom, #ffffff, #d4a356);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     filter: drop-shadow(2px 2px 0px var(--guinda));
 }
 
-/* --- GRID --- */
-.playbook-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-/* --- TARJETAS (ESTILOS ORIGINALES + FUNCIONALIDAD CORREGIDA) --- */
-.play-card {
-    width: 100%;
-    height: 400px;
-    perspective: 1000px;
-    cursor: pointer;
-}
-
-.play-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-}
-
-/* Se activa con la clase .flip gestionada por tu JS */
-.play-card.flip .play-card-inner {
-    transform: rotateY(180deg);
-}
-
-.play-card-front,
-.play-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+/* --- SECCIÓN BIENVENIDA --- */
+.welcome-section {
+    background: var(--blanco);
+    padding: 30px;
     border-radius: 15px;
-    border: 3px solid var(--oro);
-    overflow: hidden;
-    top: 0;
-    left: 0;
+    border-left: 8px solid var(--guinda);
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
+.welcome-section h2 { color: var(--guinda); margin-bottom: 15px; }
+.welcome-section p { margin-bottom: 10px; line-height: 1.6; }
+.welcome-section .italic { font-style: italic; color: #555; }
+.welcome-section .bold { font-weight: bold; color: var(--guinda); margin-top: 10px; }
 
-.play-card-front {
-    background: #1a1a1a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    transform: rotateY(0deg);
-}
-
-.play-card-back {
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotateY(180deg); /* El video empieza invertido para que al girar se vea bien */
-    z-index: 1;
-}
-
-.play-card-front img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 10px;
-}
-
-.play-card-back video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Mantiene la proporción del video original */
-}
-
-.play-name {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: var(--guinda);
-    color: var(--oro);
-    padding: 10px;
-    font-weight: bold;
-    text-align: center;
-    /* Evitamos que el nombre se asome por detrás al girar */
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-/* --- REGLAMENTO --- */
+/* --- REGLAMENTO (ESTILO PREMIUM) --- */
 .rules-container {
     background-color: var(--guinda);
-    padding: 30px;
-    border-radius: 20px;
+    padding: 40px;
+    border-radius: 25px;
     color: var(--blanco);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.rules-title {
+    border-bottom: 2px solid var(--oro);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
 }
 
 .rule-card-web {
     background: var(--blanco);
     color: var(--negro);
-    margin-bottom: 15px;
-    padding: 20px;
-    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 25px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
+    border-left: 6px solid var(--oro);
+    box-shadow: 4px 4px 0px rgba(212, 163, 86, 0.4);
+    transition: 0.3s;
 }
+
+.rule-card-web:hover { transform: scale(1.01); }
 
 .rule-number {
     background: var(--oro);
     color: var(--guinda);
-    width: 40px;
-    height: 40px;
+    min-width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-weight: bold;
+    font-weight: 900;
+    font-size: 1.2rem;
 }
 
-/* ==========================================
-   📱 MODO MÓVIL
-   ========================================== */
+.rule-content strong { color: var(--guinda); font-size: 1.1rem; display: block; margin-bottom: 5px; }
+.rule-content ul { padding-left: 20px; margin-top: 10px; }
+.rule-content li { margin-bottom: 5px; }
+
+.rules-footer { text-align: center; margin-top: 30px; font-weight: bold; color: var(--oro); font-size: 1.1rem; }
+
+/* --- FIX PARA LAS TARJETAS DE JUGADAS (GIRATORIAS) --- */
+.play-card { width: 100%; height: 400px; perspective: 1000px; cursor: pointer; }
+.play-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
+.play-card.flip .play-card-inner { transform: rotateY(180deg); }
+.play-card-front, .play-card-back {
+    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+    border-radius: 15px; border: 3px solid var(--oro); overflow: hidden;
+}
+.play-card-back { background: #000; transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; }
+.play-card-back video { width: 100%; height: 100%; object-fit: contain; }
+
+/* --- MODO MÓVIL --- */
 @media (max-width: 850px) {
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .sidebar {
-        transform: translateX(-100%);
-    }
-
-    .sidebar.active {
-        transform: translateX(0);
-    }
-
+    .menu-toggle { display: block; }
+    .sidebar { transform: translateX(-100%); width: 260px; }
+    .sidebar.active { transform: translateX(0); }
     .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        z-index: 1500;
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5); opacity: 0; pointer-events: none;
+        transition: 0.3s; z-index: 1500;
     }
-
-    .overlay.active {
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    .no-scroll {
-        overflow: hidden;
-    }
-
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-        padding: 80px 15px 20px 15px;
-    }
-
-    .header-web {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
-
-    .header-web h1 {
-        font-size: 2.5rem;
-    }
-
-    .header-web img {
-        width: 120px;
-    }
-
-    .playbook-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .play-card {
-        height: 350px;
-    }
-
-    .rule-card-web {
-        flex-direction: column;
-        text-align: center;
-    }
+    .overlay.active { opacity: 1; pointer-events: all; }
+    .main-content { margin-left: 0; padding: 80px 15px 20px 15px; }
+    .header-web { flex-direction: column; text-align: center; }
+    .header-web h1 { font-size: 2.5rem; }
+    .rule-card-web { flex-direction: column; text-align: center; gap: 15px; }
 }
