@@ -140,9 +140,10 @@ body {
     gap: 25px;
 }
 
-/* --- TARJETAS --- */
+/* --- TARJETAS (FIX REAL) --- */
 .play-card {
-    height: 380px;
+    width: 100%;
+    aspect-ratio: 3 / 4; /* 🔥 reemplaza height fija */
     perspective: 1000px;
     cursor: pointer;
 }
@@ -152,13 +153,15 @@ body {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.7s;
+    transition: transform 0.7s ease;
 }
 
+/* FLIP */
 .play-card.flip .play-card-inner {
     transform: rotateY(180deg);
 }
 
+/* CARAS */
 .play-card-front,
 .play-card-back {
     position: absolute;
@@ -178,19 +181,21 @@ body {
 .play-card-front img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* 🔥 NO corta imagen */
+    background: black;
 }
 
 /* BACK */
 .play-card-back {
     transform: rotateY(180deg);
     background: #000;
+    display: flex;
 }
 
 .play-card-back video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* 🔥 NO deforma video */
 }
 
 /* NAME */
@@ -261,10 +266,6 @@ body {
 
     .header-web h1 {
         font-size: 2.2rem;
-    }
-
-    .play-card {
-        height: 320px;
     }
 
     .rule-card-web {

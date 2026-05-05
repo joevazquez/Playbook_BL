@@ -148,9 +148,32 @@
             document.body.classList.remove('no-scroll');
         }
 
-        // 🔥 FLIP + VIDEO
+        /* 🔥 FIX REAL FLIP + MOBILE */
         document.querySelectorAll('.play-card').forEach(card => {
+
+            let startX = 0;
+            let startY = 0;
+            let isScrolling = false;
+
+            /* Detectar si el usuario está haciendo scroll */
+            card.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                isScrolling = false;
+            });
+
+            card.addEventListener('touchmove', (e) => {
+                let diffX = Math.abs(e.touches[0].clientX - startX);
+                let diffY = Math.abs(e.touches[0].clientY - startY);
+
+                if (diffY > diffX) {
+                    isScrolling = true; // 🔥 está scrolleando
+                }
+            });
+
             card.addEventListener('click', function () {
+
+                if (isScrolling) return; // 🔥 evita flip accidental
 
                 this.classList.toggle('flip');
 
@@ -165,6 +188,7 @@
                     }
                 }
             });
+
         });
     </script>
 
