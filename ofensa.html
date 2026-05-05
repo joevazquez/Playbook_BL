@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="overlay" onclick="closeMenu()"></div>
     <!-- Botón Hamburguesa -->
     <button class="menu-toggle" onclick="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
@@ -127,9 +128,17 @@
             </div>
         </div>
     </div>
-    <script>
+        <script>
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
+            document.querySelector('.overlay').classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+
+        function closeMenu() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.querySelector('.overlay').classList.remove('active');
+            document.body.classList.remove('no-scroll');
         }
     </script>
 </body>

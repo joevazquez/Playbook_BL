@@ -30,7 +30,7 @@ body {
 
 /* --- SIDEBAR --- */
 .sidebar {
-    width: 250px;
+    width: 260px;
     background-color: var(--guinda);
     color: var(--oro);
     display: flex;
@@ -41,7 +41,9 @@ body {
     left: 0;
     top: 0;
     z-index: 2000;
-    transition: transform 0.3s ease;
+
+    transform: translateX(0);
+    transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 /* NAV ITEMS */
@@ -228,15 +230,36 @@ body {
 
     .sidebar {
         transform: translateX(-100%);
-        width: 260px;
     }
 
     .sidebar.active {
         transform: translateX(0);
-        box-shadow: 10px 0 30px rgba(0,0,0,0.5);
     }
 
     /* Overlay */
+    /* Overlay oscuro */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 1500;
+    }
+
+    .overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    /* Bloquear scroll cuando menú abierto */
+    .no-scroll {
+        overflow: hidden;
+    }
     .sidebar.active::after {
         content: "";
         position: fixed;

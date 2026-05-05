@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="overlay" onclick="closeMenu()"></div>
     <!-- Botón Hamburguesa -->
     <button class="menu-toggle" onclick="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
     </button>
     <div class="web-container">
         <div class="sidebar" id="sidebar">
-            <a href="index.html" class="nav-item active"><i class="fa-solid fa-house"></i> INICIO</a>
-            <a href="ofensa.html" class="nav-item"><i class="fa-solid fa-football"></i> OFENSA</a>
-            <a href="defensa.html" class="nav-item"><i class="fa-solid fa-shield"></i> DEFENSA</a>
+            <a href="index.html" class="nav-item" onclick="closeMenu()">INICIO</a>
+            <a href="ofensa.html" class="nav-item" onclick="closeMenu()">OFENSA</a>
+            <a href="defensa.html" class="nav-item" onclick="closeMenu()">DEFENSA</a>
         </div>
         <div class="main-content">
             <div class="header-web">
@@ -107,6 +108,14 @@
     <script>
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
+            document.querySelector('.overlay').classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+
+        function closeMenu() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.querySelector('.overlay').classList.remove('active');
+            document.body.classList.remove('no-scroll');
         }
     </script>
 </body>
