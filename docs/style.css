@@ -68,6 +68,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     
     background: none;
     -webkit-background-clip: initial;
+    background-clip: initial;
     -webkit-text-fill-color: initial;
 }
 
