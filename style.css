@@ -6,13 +6,27 @@
     --blanco: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Segoe UI', sans-serif; 
+}
 
-body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; }
+body { 
+    background-color: var(--crema); 
+    color: var(--negro); 
+    overflow-x: hidden; 
+}
 
-/* --- NAVEGACIÓN --- */
-.web-container { display: flex; height: 100vh; }
+/* --- ESTRUCTURA PRINCIPAL --- */
+.web-container { 
+    display: flex; 
+    height: 100vh; 
+    transition: flex-direction 0.3s ease;
+}
 
+/* --- NAVEGACIÓN (SIDEBAR) --- */
 .sidebar {
     width: 250px;
     background-color: var(--guinda);
@@ -20,36 +34,63 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
     display: flex;
     flex-direction: column;
     padding: 20px;
+    flex-shrink: 0;
+    z-index: 1000;
 }
 
 .nav-item {
-    padding: 15px; margin: 10px 0; cursor: pointer;
-    display: flex; align-items: center; font-weight: bold;
-    text-transform: uppercase; border-radius: 8px; transition: 0.3s;
-    color: var(--oro); text-decoration: none;
+    padding: 15px; 
+    margin: 10px 0; 
+    cursor: pointer;
+    display: flex; 
+    align-items: center; 
+    font-weight: bold;
+    text-transform: uppercase; 
+    border-radius: 8px; 
+    transition: 0.3s;
+    color: var(--oro); 
+    text-decoration: none;
 }
 
-.nav-item i { margin-right: 15px; font-size: 1.2rem; width: 25px; text-align: center; }
-.nav-item:hover, .nav-item.active { background-color: rgba(212, 163, 86, 0.2); border-left: 5px solid var(--oro); }
+.nav-item i { 
+    margin-right: 15px; 
+    font-size: 1.2rem; 
+    width: 25px; 
+    text-align: center; 
+}
 
-/* --- CABECERA METÁLICA --- */
-.main-content { flex: 1; padding: 40px; overflow-y: auto; }
+.nav-item:hover, .nav-item.active { 
+    background-color: rgba(212, 163, 86, 0.2); 
+    border-left: 5px solid var(--oro); 
+}
 
-.header-web { display: flex; align-items: center; margin-bottom: 40px; gap: 30px; }
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content { 
+    flex: 1; 
+    padding: 40px; 
+    overflow-y: auto; 
+}
+
+/* --- CABECERA --- */
+.header-web { 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 40px; 
+    gap: 30px; 
+}
+
 .header-web img { 
     width: 150px; 
     filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
     border-radius: 15px;
 }
 
-/* --- TÍTULO ESTILO LOGOTIPO REFINADO --- */
+/* --- TÍTULO METÁLICO --- */
 .header-web h1 { 
     font-size: 5rem; 
     font-weight: 900; 
     text-transform: uppercase;
     font-family: 'Impact', 'Arial Narrow Bold', sans-serif; 
-    
-    /* Degradado metálico más nítido */
     background: linear-gradient(
         to bottom, 
         #ffffff 0%,   
@@ -59,37 +100,46 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* Borde guinda limpio sin amontonarse */
     filter: drop-shadow(1.5px 1.5px 0px #631e26) 
             drop-shadow(-1.5px -1.5px 0px #631e26)
             drop-shadow(1.5px -1.5px 0px #631e26)
             drop-shadow(-1.5px 1.5px 0px #631e26);
-
-    /* Sombra de relieve más sutil hacia abajo */
     text-shadow: 3px 4px 0px #631e26;
-
-    /* --- AJUSTES DE ESPACIADO --- */
-    letter-spacing: 2px;   /* Más espacio entre letras para que no choquen */
-    line-height: 1.1;      /* Más espacio entre PLAYBOOK y HUB */
-    margin-left: 10px;     /* Separación del logo */
+    letter-spacing: 2px;
+    line-height: 1.1;
+    margin-left: 10px;
 }
 
-/* --- CONTENEDORES DE REGLAS --- */
+/* --- REGLAS Y CONTENEDORES --- */
 .rules-container {
-    background-color: var(--guinda); padding: 30px; border-radius: 20px;
-    color: var(--blanco); box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background-color: var(--guinda); 
+    padding: 30px; 
+    border-radius: 20px;
+    color: var(--blanco); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .rule-card-web {
-    background: var(--blanco); color: var(--negro); margin-bottom: 15px;
-    padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px;
+    background: var(--blanco); 
+    color: var(--negro); 
+    margin-bottom: 15px;
+    padding: 20px; 
+    border-radius: 12px; 
+    display: flex; 
+    align-items: center; 
+    gap: 20px;
 }
 
 .rule-number {
-    background: var(--oro); color: var(--guinda);
-    width: 40px; height: 40px; display: flex; align-items: center; 
-    justify-content: center; border-radius: 50%; font-weight: bold;
+    background: var(--oro); 
+    color: var(--guinda);
+    width: 40px; 
+    height: 40px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 50%; 
+    font-weight: bold;
 }
 
 /* --- GRID DE JUGADAS --- */
@@ -100,12 +150,14 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
     padding: 20px 0;
 }
 
-/* --- EFECTO DE TARJETA GIRATORIA --- */
+/* --- TARJETAS GIRATORIAS (FLIP CARDS) --- */
 .play-card {
     background-color: transparent;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     height: 400px;
-    perspective: 1000px; /* Necesario para el efecto 3D */
+    perspective: 1000px;
+    margin: 0 auto;
 }
 
 .play-card-inner {
@@ -122,38 +174,29 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
     transform: rotateY(180deg);
 }
 
-.play-card-front {
+.play-card-front, .play-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 15px;
-    border: 3px solid var(--oro); /* El marco dorado del equipo */
+    border: 3px solid var(--oro);
     overflow: hidden;
-    background-color: #1a1a1a; /* Fondo oscuro que iguala tus diagramas */
+}
+
+.play-card-front {
+    background-color: #1a1a1a;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.play-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Oculta la parte de atrás al girar */
-    backface-visibility: hidden;
-    border-radius: 15px;
-    border: 3px solid var(--oro);
-    overflow: hidden;
-    background-color: var(--blanco);
-}
-
 .play-card-front img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Muestra TODA la imagen (incluyendo a X) sin recortar */
-    padding: 10px;       /* Espacio para que las rutas no toquen el borde dorado */
+    object-fit: contain;
+    padding: 10px;
 }
 
 .play-name {
@@ -168,7 +211,6 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
     border-top: 2px solid var(--oro);
 }
 
-/* Diseño de Atrás */
 .play-card-back {
     background-color: var(--guinda);
     color: var(--blanco);
@@ -188,4 +230,99 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
     padding: 10px;
     font-weight: bold;
     color: var(--oro);
+}
+
+/* ============================================================
+   --- RESPONSIVIDAD (AJUSTE PARA CELULAR Y LAPTOP) --- 
+   ============================================================ */
+
+@media (max-width: 850px) {
+    /* El contenedor ahora se apila verticalmente */
+    .web-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    /* La barra lateral se vuelve menú superior */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 10px 5px;
+        flex-direction: row;
+        justify-content: space-around;
+        position: sticky;
+        top: 0;
+        border-bottom: 2px solid var(--oro);
+    }
+
+    .nav-item {
+        margin: 0;
+        padding: 8px;
+        font-size: 0.75rem;
+        flex-direction: column; /* Icono arriba, texto abajo */
+        gap: 5px;
+        border-left: none;
+    }
+
+    .nav-item:hover, .nav-item.active {
+        border-left: none;
+        border-bottom: 3px solid var(--oro);
+        background-color: transparent;
+    }
+
+    .nav-item i {
+        margin-right: 0;
+        font-size: 1.1rem;
+    }
+
+    /* Ajuste de contenido */
+    .main-content {
+        padding: 20px;
+    }
+
+    /* Ajuste de Cabecera y Título */
+    .header-web {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .header-web img {
+        width: 120px;
+    }
+
+    .header-web h1 {
+        font-size: 2.8rem; /* Título más pequeño para que no se corte */
+        margin-left: 0;
+        letter-spacing: 1px;
+    }
+
+    /* Ajuste de Grid */
+    .playbook-grid {
+        grid-template-columns: 1fr; /* Una sola columna en celulares */
+        justify-items: center;
+    }
+
+    .play-card {
+        height: 350px; /* Un poco más corta para pantallas pequeñas */
+    }
+
+    /* Ajuste de Reglas */
+    .rule-card-web {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+}
+
+/* Para pantallas muy pequeñas (iPhone SE, etc) */
+@media (max-width: 480px) {
+    .header-web h1 {
+        font-size: 2.2rem;
+    }
+    
+    .nav-item span {
+        font-size: 0.65rem;
+    }
 }
