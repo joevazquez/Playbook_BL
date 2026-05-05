@@ -47,11 +47,28 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 
 .header-web { display: flex; align-items: center; margin-bottom: 40px; gap: 30px; }
 .header-web img { width: 150px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+/* --- TÍTULO ESTILO 3D (REMPLAZADO) --- */
 .header-web h1 {
-    font-size: 5rem; font-weight: 900; text-transform: uppercase; font-family: 'Impact', sans-serif;
-    background: linear-gradient(to bottom, #ffffff, #d4a356);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    filter: drop-shadow(2px 2px 0px var(--guinda));
+    font-size: 5.5rem; 
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    color: var(--guinda); /* Color sólido guinda */
+    line-height: 0.9;
+    letter-spacing: 2px;
+    
+    /* Efecto de relieve 3D similar a las imágenes proporcionadas */
+    text-shadow: 
+        1px 1px 0px var(--oro),
+        2px 2px 0px var(--oro),
+        3px 3px 0px var(--oro),
+        4px 4px 0px var(--oro),
+        5px 5px 15px rgba(0,0,0,0.3);
+    
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
 }
 
 /* --- SECCIÓN BIENVENIDA --- */
@@ -143,6 +160,9 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     .overlay.active { opacity: 1; pointer-events: all; }
     .main-content { margin-left: 0; padding: 80px 15px 20px 15px; }
     .header-web { flex-direction: column; text-align: center; }
-    .header-web h1 { font-size: 2.5rem; }
+    .header-web h1 { 
+        font-size: 2.8rem; 
+        text-shadow: 1px 1px 0px var(--oro), 2px 2px 0px var(--oro); /* Reducimos 3D en móvil */
+    }
     .rule-card-web { flex-direction: column; text-align: center; gap: 15px; }
 }

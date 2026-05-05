@@ -9,102 +9,114 @@
 </head>
 <body>
     <div class="overlay" onclick="closeMenu()"></div>
+    
     <!-- Botón Hamburguesa -->
     <button class="menu-toggle" onclick="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
     </button>
+
     <div class="web-container">
+        <!-- SIDEBAR -->
         <div class="sidebar" id="sidebar">
-            <a href="index.html" class="nav-item" onclick="closeMenu()">INICIO</a>
-            <a href="ofensa.html" class="nav-item" onclick="closeMenu()">OFENSA</a>
-            <a href="defensa.html" class="nav-item" onclick="closeMenu()">DEFENSA</a>
+            <a href="index.html" class="nav-item active" onclick="closeMenu()">
+                <i class="fas fa-home"></i> INICIO
+            </a>
+            <a href="ofensa.html" class="nav-item" onclick="closeMenu()">
+                <i class="fas fa-football-ball"></i> OFENSA
+            </a>
+            <a href="defensa.html" class="nav-item" onclick="closeMenu()">
+                <i class="fas fa-shield-alt"></i> DEFENSA
+            </a>
         </div>
+
+        <!-- CONTENIDO PRINCIPAL -->
         <div class="main-content">
             <div class="header-web">
                 <img src="LOGO_BL_FEM.jpeg" alt="Logo Barra Libre">
                 <h1>PLAYBOOK<br>HUB</h1>
             </div>
 
-            <!-- Sección de Bienvenida -->
-            <div class="rules-container" style="margin-bottom: 30px; background: var(--crema); color: var(--negro); border: 2px solid var(--guinda);">
-                <h2 style="color: var(--guinda); margin-bottom: 15px;">✨ Bienvenidos, familia Barra Libre ✨</h2>
-                <p style="font-style: italic; margin-bottom: 15px; line-height: 1.6;">
-                    Hoy damos inicio oficialmente a este proyecto que estamos construyendo juntos, con esfuerzo, compromiso y muchas ganas de crecer.
-                </p>
-                <p style="margin-bottom: 15px; line-height: 1.6;">
-                    Cada uno de ustedes forma parte importante de este equipo: no solo como jugadores, sino como personas que aportan energía, compañerismo y corazón dentro y fuera del campo.
-                </p>
-                <p style="font-weight: bold; color: var(--guinda);">¡Este equipo es de todos… y lo vamos a levantar juntos. 💛🔥🏈!</p>
+            <!-- Sección de Bienvenida (Estilo Caja Blanca Premium) -->
+            <div class="welcome-section">
+                <h2>✨ Bienvenidos, familia Barra Libre ✨</h2>
+                <p class="italic">Hoy damos inicio oficialmente a este proyecto que estamos construyendo juntos, con esfuerzo, compromiso y muchas ganas de crecer.</p>
+                <p>Cada uno de ustedes forma parte importante de este equipo: no solo como jugadores, sino como personas que aportan energía, compañerismo y corazón dentro y fuera del campo.</p>
+                <p class="bold">¡Este equipo es de todos… y lo vamos a levantar juntos. 💛🔥🏈!</p>
             </div>
 
-            <!-- Sección de Reglamento -->
+            <!-- Sección de Reglamento (El contenedor Guinda) -->
             <div class="rules-container">
-                <h2 style="text-align: left; border-bottom: 2px solid var(--oro); padding-bottom: 10px; margin-bottom: 25px;">
-                    📢 Reglamento General – Comunidad Barra Libre
+                <h2 class="rules-title">
+                    <i class="fa-solid fa-bullhorn"></i> Reglamento General – Comunidad Barra Libre
                 </h2>
 
                 <!-- Punto 1 -->
-                <div class="rule-card-web" style="border-left: 5px solid var(--oro);">
+                <div class="rule-card-web">
                     <div class="rule-number">1</div>
-                    <div>
+                    <div class="rule-content">
                         <strong>Pagos y cuotas:</strong>
-                        <ul style="margin-top: 10px; list-style-type: none; padding-left: 5px;">
-                            <li>• Liquidar antes de la fecha límite establecida.</li>
-                            <li>• Sin pago no hay participación en entrenamientos ni partidos.</li>
-                            <li>• No habrá excepciones, solo en caso de exponer su caso se tomara en cuenta y se podrá dar una prórroga.</li>
+                        <ul>
+                            <li>Liquidación antes de la fecha límite establecida.</li>
+                            <li>Sin pago no hay participación en entrenamientos ni partidos.</li>
+                            <li>No habrá excepciones (casos especiales con prórroga bajo revisión).</li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Punto 2 -->
-                <div class="rule-card-web" style="border-left: 5px solid var(--oro);">
+                <div class="rule-card-web">
                     <div class="rule-number">2</div>
-                    <div>
+                    <div class="rule-content">
                         <strong>Encuestas y asistencia:</strong>
-                        <ul style="margin-top: 10px; list-style-type: none; padding-left: 5px;">
-                            <li>• Responder encuestas es obligatorio para ser considerado en el juego.</li>
-                            <li>• Las respuestas deben ser puntuales y responsables.</li>
+                        <p>Responder encuestas es obligatorio para ser considerado en el juego. Las respuestas deben ser puntuales y responsables.</p>
+                    </div>
+                </div>
+
+                <!-- Punto 3 -->
+                <div class="rule-card-web">
+                    <div class="rule-number">3</div>
+                    <div class="rule-content">
+                        <strong>Compromiso y responsabilidad:</strong>
+                        <ul>
+                            <li>Desde el inicio se solicita compromiso total: puntualidad, asistencia constante y buena actitud.</li>
+                            <li>El rendimiento del equipo depende del esfuerzo de cada integrante.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Punto 4 (Especial Uniformes) -->
-                <div class="rule-card-web" style="border-left: 5px solid var(--oro);">
+
+                <!-- Punto 4 -->
+                <div class="rule-card-web">
                     <div class="rule-number">4</div>
-                    <div>
+                    <div class="rule-content">
                         <strong>Uniforme:</strong>
-                        <p style="margin-top: 5px;">Si se debe uniforme y temporada, el pago se aplicará <strong>primero a la temporada</strong>.</p>
-                        <p>No se entregará uniforme hasta estar al corriente.</p>
+                        <p>Si se debe uniforme y temporada, el pago se aplicará <strong>primero a la temporada</strong>. No se entregará uniforme hasta estar al corriente.</p>
                     </div>
                 </div>
 
-                <!-- Punto -->
-                <div class="rule-card-web" style="border-left: 5px solid var(--oro);">
+                <!-- Punto 5 -->
+                <div class="rule-card-web">
                     <div class="rule-number">5</div>
-                    <div>
+                    <div class="rule-content">
                         <strong>Conducta y respeto:</strong>
-                        <ul style="margin-top: 10px; list-style-type: none; padding-left: 5px;">
-                            <li>• Todos deben mantener un comportamiento respetuoso en el grupo, entrenamientos y partidos.</li>
-                            <li>• Cualquier conflicto debe manejarse con madurez y comunicación adecuada.</li>
-                        </ul>
+                        <p>Comportamiento respetuoso en el grupo, entrenamientos y partidos. Manejo de conflictos con madurez.</p>
                     </div>
                 </div>
 
                 <!-- Punto 6 -->
-                <div class="rule-card-web" style="border-left: 5px solid var(--oro);">
+                <div class="rule-card-web">
                     <div class="rule-number">6</div>
-                    <div>
+                    <div class="rule-content">
                         <strong>Adeudos:</strong>
                         <p>De no cumplir la fecha acordada, se notificará a la liga, lo que puede impedir tu participación.</p>
                     </div>
                 </div>
 
-                <p style="text-align: center; margin-top: 30px; font-weight: bold; color: var(--oro);">
-                    Gracias por ser parte de Barra Libre. Este es solo el inicio…
-                </p>
+                <p class="rules-footer">Gracias por ser parte de Barra Libre. Este es solo el inicio…</p>
             </div>
         </div>
     </div>
+
     <script>
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
