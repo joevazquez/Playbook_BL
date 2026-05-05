@@ -104,7 +104,14 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
 /* ==========================================
    --- MODO MOVIL (HAMBURGUESA + 1 COL) --- 
    ========================================== */
+.sidebar {
+    left: 0;
+    top: 0;
+}
 
+html, body {
+    overflow-x: hidden;
+}
 @media (max-width: 850px) {
 
     .sidebar.active::after {
@@ -115,6 +122,7 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
     width: calc(100% - 260px);
     height: 100%;
     background: rgba(0,0,0,0.4);
+    pointer-events: none;
     }
 
     .menu-toggle { display: block; } /* Mostrar hamburguesa */
