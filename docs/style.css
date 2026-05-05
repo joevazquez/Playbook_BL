@@ -6,16 +6,31 @@
     --blanco: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; }
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--crema);
+    color: var(--negro);
+}
 
 /* --- ESTRUCTURA --- */
-.web-container { display: flex; min-height: 100vh; }
+.web-container {
+    display: flex;
+    min-height: 100vh;
+}
 
-/* --- SIDEBAR (LAPTOP) --- */
+/* --- SIDEBAR --- */
 .sidebar {
-    width: 250px;
+    width: 260px;
     background-color: var(--guinda);
     color: var(--oro);
     display: flex;
@@ -23,19 +38,40 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
     padding: 20px;
     position: fixed;
     height: 100vh;
+    left: 0;
+    top: 0;
     z-index: 2000;
-    transition: transform 0.3s ease;
+    transform: translateX(0);
+    transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
+/* NAV ITEMS */
 .nav-item {
-    padding: 15px; margin: 10px 0; cursor: pointer;
-    display: flex; align-items: center; font-weight: bold;
-    text-transform: uppercase; border-radius: 8px; transition: 0.3s;
-    color: var(--oro); text-decoration: none;
+    padding: 15px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    color: var(--oro);
+    text-decoration: none;
 }
 
-.nav-item i { margin-right: 15px; font-size: 1.2rem; width: 25px; text-align: center; }
-.nav-item:hover, .nav-item.active { background-color: rgba(212, 163, 86, 0.2); border-left: 5px solid var(--oro); }
+.nav-item i {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    width: 25px;
+    text-align: center;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background-color: rgba(212, 163, 86, 0.2);
+    border-left: 5px solid var(--oro);
+    transform: scale(0.95);
+}
 
 /* --- BOTÓN HAMBURGUESA --- */
 .menu-toggle {
@@ -54,117 +90,195 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
 }
 
 /* --- CONTENIDO PRINCIPAL --- */
-.main-content { 
-    flex: 1; 
-    margin-left: 250px; 
-    padding: 40px; 
-    width: calc(100% - 250px);
+.main-content {
+    flex: 1;
+    margin-left: 260px;
+    padding: 40px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
-.header-web { display: flex; align-items: center; margin-bottom: 40px; gap: 30px; }
-.header-web img { width: 150px; border-radius: 15px; }
+/* HEADER */
+.header-web {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 30px;
+}
 
-.header-web h1 { 
-    font-size: 5rem; font-weight: 900; text-transform: uppercase;
-    font-family: 'Impact', sans-serif; 
+.header-web img {
+    width: 150px;
+    border-radius: 15px;
+}
+
+.header-web h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: 'Impact', sans-serif;
     background: linear-gradient(to bottom, #ffffff, #d4a356);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     filter: drop-shadow(2px 2px 0px var(--guinda));
 }
 
-/* --- GRID DE JUGADAS --- */
+/* --- GRID --- */
 .playbook-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
 }
 
-/* --- TARJETAS (ESTILOS ORIGINALES + FIX DE VIDEO) --- */
-.play-card { 
-    width: 100%; 
-    height: 400px; 
-    perspective: 1000px; 
-    cursor: pointer; /* Agregado para indicar clic */
+/* --- TARJETAS (ESTILOS ORIGINALES + FUNCIONALIDAD CORREGIDA) --- */
+.play-card {
+    width: 100%;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
 }
 
-.play-card-inner { 
-    position: relative; 
-    width: 100%; 
-    height: 100%; 
-    transition: transform 0.8s; 
-    transform-style: preserve-3d; 
+.play-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
 }
 
-/* El giro se activa con la clase .flip (vía JS) */
-.play-card.flip .play-card-inner { transform: rotateY(180deg); }
+/* Se activa con la clase .flip gestionada por tu JS */
+.play-card.flip .play-card-inner {
+    transform: rotateY(180deg);
+}
 
-.play-card-front, .play-card-back {
-    position: absolute; 
-    width: 100%; 
-    height: 100%; 
+.play-card-front,
+.play-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    border-radius: 15px; 
-    border: 3px solid var(--oro); 
+    border-radius: 15px;
+    border: 3px solid var(--oro);
     overflow: hidden;
     top: 0;
     left: 0;
 }
 
-.play-card-front { 
-    background: #1a1a1a; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+.play-card-front {
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 2;
     transform: rotateY(0deg);
 }
 
-.play-card-back { 
-    background: #000; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    transform: rotateY(180deg); /* El video empieza rotado */
+.play-card-back {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(180deg); /* El video empieza invertido para que al girar se vea bien */
     z-index: 1;
 }
 
-.play-card-front img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
-.play-card-back video { width: 100%; height: 100%; object-fit: contain; }
+.play-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.play-card-back video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Mantiene la proporción del video original */
+}
 
 .play-name {
-    position: absolute; bottom: 0; width: 100%; background: var(--guinda); 
-    color: var(--oro); padding: 10px; font-weight: bold; text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: var(--guinda);
+    color: var(--oro);
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    /* Evitamos que el nombre se asome por detrás al girar */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
 
 /* --- REGLAMENTO --- */
-.rules-container { background-color: var(--guinda); padding: 30px; border-radius: 20px; color: var(--blanco); }
-.rule-card-web { background: var(--blanco); color: var(--negro); margin-bottom: 15px; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px; }
-.rule-number { background: var(--oro); color: var(--guinda); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; }
-
-/* --- OVERLAY MÓVIL (Necesario para el JS del menú) --- */
-.overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5); opacity: 0; pointer-events: none;
-    transition: 0.3s; z-index: 1500;
+.rules-container {
+    background-color: var(--guinda);
+    padding: 30px;
+    border-radius: 20px;
+    color: var(--blanco);
 }
-.overlay.active { opacity: 1; pointer-events: all; }
 
-/* --- MODO MOVIL --- */
+.rule-card-web {
+    background: var(--blanco);
+    color: var(--negro);
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.rule-number {
+    background: var(--oro);
+    color: var(--guinda);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* ==========================================
+   📱 MODO MÓVIL
+   ========================================== */
 @media (max-width: 850px) {
-    .menu-toggle { display: block; }
+
+    .menu-toggle {
+        display: block;
+    }
 
     .sidebar {
         transform: translateX(-100%);
-        width: 260px;
     }
 
     .sidebar.active {
         transform: translateX(0);
-        box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 1500;
+    }
+
+    .overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .no-scroll {
+        overflow: hidden;
     }
 
     .main-content {
@@ -173,11 +287,30 @@ body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; 
         padding: 80px 15px 20px 15px;
     }
 
-    .header-web { flex-direction: column; text-align: center; gap: 15px; }
-    .header-web h1 { font-size: 2.5rem; }
-    .header-web img { width: 120px; }
+    .header-web {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
 
-    .playbook-grid { grid-template-columns: 1fr; }
-    .play-card { height: 350px; max-width: 100%; }
-    .rule-card-web { flex-direction: column; text-align: center; }
+    .header-web h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-web img {
+        width: 120px;
+    }
+
+    .playbook-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .play-card {
+        height: 350px;
+    }
+
+    .rule-card-web {
+        flex-direction: column;
+        text-align: center;
+    }
 }
