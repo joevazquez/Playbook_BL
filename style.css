@@ -1,0 +1,191 @@
+:root {
+    --guinda: #631e26;
+    --oro: #d4a356;
+    --crema: #f9f5eb;
+    --negro: #1a1a1a;
+    --blanco: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+body { background-color: var(--crema); color: var(--negro); overflow-x: hidden; }
+
+/* --- NAVEGACIÓN --- */
+.web-container { display: flex; height: 100vh; }
+
+.sidebar {
+    width: 250px;
+    background-color: var(--guinda);
+    color: var(--oro);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.nav-item {
+    padding: 15px; margin: 10px 0; cursor: pointer;
+    display: flex; align-items: center; font-weight: bold;
+    text-transform: uppercase; border-radius: 8px; transition: 0.3s;
+    color: var(--oro); text-decoration: none;
+}
+
+.nav-item i { margin-right: 15px; font-size: 1.2rem; width: 25px; text-align: center; }
+.nav-item:hover, .nav-item.active { background-color: rgba(212, 163, 86, 0.2); border-left: 5px solid var(--oro); }
+
+/* --- CABECERA METÁLICA --- */
+.main-content { flex: 1; padding: 40px; overflow-y: auto; }
+
+.header-web { display: flex; align-items: center; margin-bottom: 40px; gap: 30px; }
+.header-web img { 
+    width: 150px; 
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    border-radius: 15px;
+}
+
+/* --- TÍTULO ESTILO LOGOTIPO REFINADO --- */
+.header-web h1 { 
+    font-size: 5rem; 
+    font-weight: 900; 
+    text-transform: uppercase;
+    font-family: 'Impact', 'Arial Narrow Bold', sans-serif; 
+    
+    /* Degradado metálico más nítido */
+    background: linear-gradient(
+        to bottom, 
+        #ffffff 0%,   
+        #f9f5eb 30%,  
+        #d4a356 100%  
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Borde guinda limpio sin amontonarse */
+    filter: drop-shadow(1.5px 1.5px 0px #631e26) 
+            drop-shadow(-1.5px -1.5px 0px #631e26)
+            drop-shadow(1.5px -1.5px 0px #631e26)
+            drop-shadow(-1.5px 1.5px 0px #631e26);
+
+    /* Sombra de relieve más sutil hacia abajo */
+    text-shadow: 3px 4px 0px #631e26;
+
+    /* --- AJUSTES DE ESPACIADO --- */
+    letter-spacing: 2px;   /* Más espacio entre letras para que no choquen */
+    line-height: 1.1;      /* Más espacio entre PLAYBOOK y HUB */
+    margin-left: 10px;     /* Separación del logo */
+}
+
+/* --- CONTENEDORES DE REGLAS --- */
+.rules-container {
+    background-color: var(--guinda); padding: 30px; border-radius: 20px;
+    color: var(--blanco); box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.rule-card-web {
+    background: var(--blanco); color: var(--negro); margin-bottom: 15px;
+    padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px;
+}
+
+.rule-number {
+    background: var(--oro); color: var(--guinda);
+    width: 40px; height: 40px; display: flex; align-items: center; 
+    justify-content: center; border-radius: 50%; font-weight: bold;
+}
+
+/* --- GRID DE JUGADAS --- */
+.playbook-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* --- EFECTO DE TARJETA GIRATORIA --- */
+.play-card {
+    background-color: transparent;
+    width: 300px;
+    height: 400px;
+    perspective: 1000px; /* Necesario para el efecto 3D */
+}
+
+.play-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.play-card:hover .play-card-inner {
+    transform: rotateY(180deg);
+}
+
+.play-card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    border: 3px solid var(--oro); /* El marco dorado del equipo */
+    overflow: hidden;
+    background-color: #1a1a1a; /* Fondo oscuro que iguala tus diagramas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Oculta la parte de atrás al girar */
+    backface-visibility: hidden;
+    border-radius: 15px;
+    border: 3px solid var(--oro);
+    overflow: hidden;
+    background-color: var(--blanco);
+}
+
+.play-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Muestra TODA la imagen (incluyendo a X) sin recortar */
+    padding: 10px;       /* Espacio para que las rutas no toquen el borde dorado */
+}
+
+.play-name {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: var(--guinda); 
+    color: var(--oro);
+    padding: 8px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-top: 2px solid var(--oro);
+}
+
+/* Diseño de Atrás */
+.play-card-back {
+    background-color: var(--guinda);
+    color: var(--blanco);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-card-back video {
+    width: 100%;
+    max-height: 80%;
+}
+
+.play-desc {
+    padding: 10px;
+    font-weight: bold;
+    color: var(--oro);
+}
