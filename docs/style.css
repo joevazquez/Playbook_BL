@@ -48,7 +48,6 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 .header-web { display: flex; align-items: center; margin-bottom: 40px; gap: 30px; }
 .header-web img { width: 150px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-/* --- TÍTULO ESTILO 3D --- */
 .header-web h1 {
     font-size: 5.5rem; 
     font-weight: 900;
@@ -57,46 +56,16 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     color: var(--guinda);
     line-height: 0.9;
     letter-spacing: 2px;
-    text-shadow: 
-        1px 1px 0px var(--oro),
-        2px 2px 0px var(--oro),
-        3px 3px 0px var(--oro),
-        4px 4px 0px var(--oro),
-        5px 5px 15px rgba(0,0,0,0.3);
-    background: none;
-    -webkit-background-clip: initial;
-    background-clip: initial;
-    -webkit-text-fill-color: initial;
+    text-shadow: 1px 1px 0px var(--oro), 2px 2px 0px var(--oro), 3px 3px 0px var(--oro), 4px 4px 0px var(--oro), 5px 5px 15px rgba(0,0,0,0.3);
 }
 
-/* --- SECCIÓN BIENVENIDA --- */
-.welcome-section {
-    background: var(--blanco);
-    padding: 30px;
-    border-radius: 15px;
-    border-left: 8px solid var(--guinda);
-    margin-bottom: 40px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-.welcome-section h2 { color: var(--guinda); margin-bottom: 15px; }
-.welcome-section p { margin-bottom: 10px; line-height: 1.6; }
-.welcome-section .italic { font-style: italic; color: #555; }
-.welcome-section .bold { font-weight: bold; color: var(--guinda); margin-top: 10px; }
-
-/* --- REGLAMENTO --- */
+/* --- REGLAMENTO RESTAURADO --- */
 .rules-container {
     background-color: var(--guinda);
     padding: 40px;
     border-radius: 25px;
     color: var(--blanco);
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.rules-title {
-    border-bottom: 2px solid var(--oro);
-    padding-bottom: 15px;
-    margin-bottom: 30px;
-    font-size: 1.8rem;
 }
 
 .rule-card-web {
@@ -108,12 +77,25 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     display: flex;
     align-items: center;
     gap: 25px;
-    border-left: 6px solid var(--oro);
+    border-left: 6px solid var(--oro); /* El borde que faltaba */
     box-shadow: 4px 4px 0px rgba(212, 163, 86, 0.4);
     transition: 0.3s;
 }
 
-/* --- GRID Y TARJETAS AJUSTADAS (Sin Zoom / Contain) --- */
+.rule-number {
+    background: var(--oro); /* El círculo dorado */
+    color: var(--guinda);
+    min-width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+/* --- GRID Y TARJETAS (Sin Zoom) --- */
 .playbook-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -127,16 +109,10 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 .play-card-front, .play-card-back {
     position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
     border-radius: 15px; border: 3px solid var(--oro); overflow: hidden;
-    background: #1a1a1a; /* Fondo gris oscuro para combinar con la imagen */
+    background: #1a1a1a;
 }
 
-.play-card-front img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; /* Muestra la jugada completa sin recortes */
-}
-
-.play-card-back { transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; }
+.play-card-front img { width: 100%; height: 100%; object-fit: contain; }
 .play-card-back video { width: 100%; height: 100%; object-fit: contain; }
 
 .play-name {
@@ -150,21 +126,11 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     .menu-toggle { display: block; }
     .sidebar { transform: translateX(-100%); width: 260px; }
     .sidebar.active { transform: translateX(0); }
-    .overlay {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0,0,0,0.5); opacity: 0; pointer-events: none;
-        transition: 0.3s; z-index: 1500;
-    }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; pointer-events: none; transition: 0.3s; z-index: 1500; }
     .overlay.active { opacity: 1; pointer-events: all; }
     .main-content { margin-left: 0; padding: 80px 15px 20px 15px; }
-    
-    .playbook-grid { grid-template-columns: 1fr; } 
+    .playbook-grid { grid-template-columns: 1fr; }
     .play-card { height: 250px; }
-
-    .header-web { flex-direction: column; text-align: center; }
-    .header-web h1 { 
-        font-size: 2.8rem; 
-        text-shadow: 1px 1px 0px var(--oro), 2px 2px 0px var(--oro);
-    }
+    .header-web h1 { font-size: 2.8rem; }
     .rule-card-web { flex-direction: column; text-align: center; gap: 15px; }
 }
