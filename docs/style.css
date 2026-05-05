@@ -48,24 +48,21 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 .header-web { display: flex; align-items: center; margin-bottom: 40px; gap: 30px; }
 .header-web img { width: 150px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-/* --- TÍTULO ESTILO 3D (REMPLAZADO) --- */
+/* --- TÍTULO ESTILO 3D --- */
 .header-web h1 {
     font-size: 5.5rem; 
     font-weight: 900;
     text-transform: uppercase;
     font-family: 'Impact', 'Arial Black', sans-serif;
-    color: var(--guinda); /* Color sólido guinda */
+    color: var(--guinda);
     line-height: 0.9;
     letter-spacing: 2px;
-    
-    /* Efecto de relieve 3D similar a las imágenes proporcionadas */
     text-shadow: 
         1px 1px 0px var(--oro),
         2px 2px 0px var(--oro),
         3px 3px 0px var(--oro),
         4px 4px 0px var(--oro),
         5px 5px 15px rgba(0,0,0,0.3);
-    
     background: none;
     -webkit-background-clip: initial;
     background-clip: initial;
@@ -86,7 +83,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 .welcome-section .italic { font-style: italic; color: #555; }
 .welcome-section .bold { font-weight: bold; color: var(--guinda); margin-top: 10px; }
 
-/* --- REGLAMENTO (ESTILO PREMIUM) --- */
+/* --- REGLAMENTO --- */
 .rules-container {
     background-color: var(--guinda);
     padding: 40px;
@@ -116,37 +113,37 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     transition: 0.3s;
 }
 
-.rule-card-web:hover { transform: scale(1.01); }
-
-.rule-number {
-    background: var(--oro);
-    color: var(--guinda);
-    min-width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-weight: 900;
-    font-size: 1.2rem;
+/* --- GRID Y TARJETAS AJUSTADAS (3 columnas Web / 1 columna Móvil) --- */
+.playbook-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 por renglón */
+    gap: 20px;
 }
 
-.rule-content strong { color: var(--guinda); font-size: 1.1rem; display: block; margin-bottom: 5px; }
-.rule-content ul { padding-left: 20px; margin-top: 10px; }
-.rule-content li { margin-bottom: 5px; }
-
-.rules-footer { text-align: center; margin-top: 30px; font-weight: bold; color: var(--oro); font-size: 1.1rem; }
-
-/* --- FIX PARA LAS TARJETAS DE JUGADAS (GIRATORIAS) --- */
-.play-card { width: 100%; height: 400px; perspective: 1000px; cursor: pointer; }
+.play-card { width: 100%; height: 280px; perspective: 1000px; cursor: pointer; }
 .play-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
 .play-card.flip .play-card-inner { transform: rotateY(180deg); }
+
 .play-card-front, .play-card-back {
     position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
     border-radius: 15px; border: 3px solid var(--oro); overflow: hidden;
+    background: #000; /* Fondo negro para eliminar espacios blancos */
 }
-.play-card-back { background: #000; transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; }
-.play-card-back video { width: 100%; height: 100%; object-fit: contain; }
+
+.play-card-front img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Llena toda la tarjeta */
+}
+
+.play-card-back { transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; }
+.play-card-back video { width: 100%; height: 100%; object-fit: cover; }
+
+.play-name {
+    position: absolute; bottom: 0; width: 100%;
+    background: rgba(99, 30, 38, 0.9); color: var(--oro);
+    padding: 10px; text-align: center; font-weight: bold;
+}
 
 /* --- MODO MÓVIL --- */
 @media (max-width: 850px) {
@@ -160,10 +157,14 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     }
     .overlay.active { opacity: 1; pointer-events: all; }
     .main-content { margin-left: 0; padding: 80px 15px 20px 15px; }
+    
+    .playbook-grid { grid-template-columns: 1fr; } /* 1 por renglón en móvil */
+    .play-card { height: 250px; }
+
     .header-web { flex-direction: column; text-align: center; }
     .header-web h1 { 
         font-size: 2.8rem; 
-        text-shadow: 1px 1px 0px var(--oro), 2px 2px 0px var(--oro); /* Reducimos 3D en móvil */
+        text-shadow: 1px 1px 0px var(--oro), 2px 2px 0px var(--oro);
     }
     .rule-card-web { flex-direction: column; text-align: center; gap: 15px; }
 }
