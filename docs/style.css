@@ -41,12 +41,11 @@ body {
     left: 0;
     top: 0;
     z-index: 2000;
-
     transform: translateX(0);
-    transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: transform 0.3s ease;
 }
 
-/* NAV ITEMS */
+/* NAV */
 .nav-item {
     padding: 15px;
     margin: 10px 0;
@@ -62,19 +61,15 @@ body {
 
 .nav-item i {
     margin-right: 15px;
-    font-size: 1.2rem;
-    width: 25px;
-    text-align: center;
 }
 
 .nav-item:hover,
 .nav-item.active {
     background-color: rgba(212, 163, 86, 0.2);
     border-left: 5px solid var(--oro);
-    transform: scale(0.95);
 }
 
-/* --- BOTÓN HAMBURGUESA --- */
+/* --- BOTÓN --- */
 .menu-toggle {
     display: none;
     position: fixed;
@@ -87,65 +82,80 @@ body {
     padding: 12px;
     border-radius: 8px;
     font-size: 1.5rem;
-    cursor: pointer;
 }
 
-/* --- CONTENIDO PRINCIPAL --- */
+/* --- OVERLAY --- */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 1500;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* --- CONTENIDO --- */
 .main-content {
     flex: 1;
-    margin-left: 250px;
+    margin-left: 260px;
     padding: 40px;
-    width: 100%; /* 🔥 FIX CLAVE */
-    position: relative;
-    z-index: 1;
+    width: 100%;
 }
 
 /* HEADER */
 .header-web {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
     gap: 30px;
+    margin-bottom: 40px;
 }
 
 .header-web img {
-    width: 150px;
+    width: 140px;
     border-radius: 15px;
 }
 
 .header-web h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 900;
-    text-transform: uppercase;
     font-family: 'Impact', sans-serif;
-    background: linear-gradient(to bottom, #ffffff, #d4a356);
+    background: linear-gradient(to bottom, #fff, #d4a356);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(2px 2px 0px var(--guinda));
 }
 
 /* --- GRID --- */
 .playbook-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
+/* --- TARJETAS --- */
 .play-card {
-    width: 100%;
-    height: 400px;
+    height: 380px;
     perspective: 1000px;
+    cursor: pointer;
 }
 
 .play-card-inner {
-    position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s;
+    position: relative;
     transform-style: preserve-3d;
+    transition: transform 0.7s;
 }
 
-.play-card:hover .play-card-inner {
+.play-card.flip .play-card-inner {
     transform: rotateY(180deg);
 }
 
@@ -154,26 +164,36 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
     border-radius: 15px;
-    border: 3px solid var(--oro);
     overflow: hidden;
+    backface-visibility: hidden;
+    border: 3px solid var(--oro);
 }
 
+/* FRONT */
 .play-card-front {
-    background: #1a1a1a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #000;
 }
 
 .play-card-front img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: 10px;
+    object-fit: cover;
 }
 
+/* BACK */
+.play-card-back {
+    transform: rotateY(180deg);
+    background: #000;
+}
+
+.play-card-back video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* NAME */
 .play-name {
     position: absolute;
     bottom: 0;
@@ -181,8 +201,8 @@ body {
     background: var(--guinda);
     color: var(--oro);
     padding: 10px;
-    font-weight: bold;
     text-align: center;
+    font-weight: bold;
 }
 
 /* --- REGLAMENTO --- */
@@ -190,17 +210,16 @@ body {
     background-color: var(--guinda);
     padding: 30px;
     border-radius: 20px;
-    color: var(--blanco);
+    color: white;
 }
 
 .rule-card-web {
-    background: var(--blanco);
-    color: var(--negro);
+    background: white;
+    color: black;
     margin-bottom: 15px;
     padding: 20px;
     border-radius: 12px;
     display: flex;
-    align-items: center;
     gap: 20px;
 }
 
@@ -213,20 +232,13 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-weight: bold;
 }
 
-/* ==========================================
-   📱 MODO MÓVIL
-   ========================================== */
+/* 📱 MOBILE */
 @media (max-width: 850px) {
 
     .menu-toggle {
         display: block;
-    }
-
-    .web-container {
-        flex-direction: column;
     }
 
     .sidebar {
@@ -237,67 +249,22 @@ body {
         transform: translateX(0);
     }
 
-    /* Overlay */
-    /* Overlay oscuro */
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        z-index: 1500;
-    }
-
-    .overlay.active {
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    /* Bloquear scroll cuando menú abierto */
-    .no-scroll {
-        overflow: hidden;
-    }
-    .sidebar.active::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 260px;
-        width: calc(100% - 260px);
-        height: 100%;
-        background: rgba(0,0,0,0.4);
-        pointer-events: none;
-    }
-
     .main-content {
         margin-left: 0;
-        width: 100%;
-        padding: 80px 15px 20px 15px;
+        padding: 80px 15px 20px;
     }
 
     .header-web {
         flex-direction: column;
         text-align: center;
-        gap: 15px;
     }
 
     .header-web h1 {
-        font-size: 2.5rem;
-    }
-
-    .header-web img {
-        width: 120px;
-    }
-
-    .playbook-grid {
-        grid-template-columns: 1fr;
+        font-size: 2.2rem;
     }
 
     .play-card {
-        height: 350px;
+        height: 320px;
     }
 
     .rule-card-web {

@@ -1,126 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barra Libre - Ofensa</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="overlay" onclick="closeMenu()"></div>
-    <!-- Botón Hamburguesa -->
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <!-- BOTÓN HAMBURGUESA -->
     <button class="menu-toggle" onclick="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
     </button>
+
     <div class="web-container">
+
+        <!-- SIDEBAR -->
         <div class="sidebar" id="sidebar">
             <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i> INICIO</a>
             <a href="ofensa.html" class="nav-item active"><i class="fa-solid fa-football"></i> OFENSA</a>
             <a href="defensa.html" class="nav-item"><i class="fa-solid fa-shield"></i> DEFENSA</a>
         </div>
+
+        <!-- CONTENIDO -->
         <div class="main-content">
+
+            <!-- HEADER -->
             <div class="header-web">
                 <img src="LOGO_BL_FEM.jpeg" alt="Logo">
                 <h1>OFENSA</h1>
             </div>
 
+            <!-- GRID -->
             <div class="playbook-grid">
-                <!-- TARJETA DE JUGADA 1 -->
+
+                <!-- CARD 1 -->
                 <div class="play-card">
                     <div class="play-card-inner">
-                        <!-- FRENTE: Nombre y Foto -->
                         <div class="play-card-front">
-                            <img src="jugadas/foto_especial.png" alt="Formación 1">
+                            <img src="jugadas/foto_especial.png">
                             <div class="play-name">ESPECIAL</div>
                         </div>
-                        <!-- ATRÁS: Video de la Jugada -->
                         <div class="play-card-back">
-                            <video autoplay loop muted playsinline>
+                            <video muted playsinline loop>
                                 <source src="jugadas/video_especial.mp4" type="video/mp4">
                             </video>
-                            <div class="play-desc">ESPECIAL</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- TARJETA DE JUGADA 2 -->
+                <!-- CARD 2 -->
                 <div class="play-card">
                     <div class="play-card-inner">
                         <div class="play-card-front">
-                            <img src="jugadas/foto_pistolas.png" alt="Formación 2">
+                            <img src="jugadas/foto_pistolas.png">
                             <div class="play-name">PISTOLAS</div>
                         </div>
                         <div class="play-card-back">
-                            <video autoplay loop muted playsinline>
+                            <video muted playsinline loop>
                                 <source src="jugadas/video_pistolas.mp4" type="video/mp4">
                             </video>
-                            <div class="play-desc">PISTOLAS</div>
                         </div>
                     </div>
                 </div>
 
-
-
-                <!-- TARJETA DE JUGADA 3 -->
+                <!-- CARD 3 -->
                 <div class="play-card">
                     <div class="play-card-inner">
                         <div class="play-card-front">
-                            <img src="jugadas/foto_arcoiris.png" alt="Formación 2">
+                            <img src="jugadas/foto_arcoiris.png">
                             <div class="play-name">ARCOIRIS</div>
                         </div>
                         <div class="play-card-back">
-                            <video autoplay loop muted playsinline>
+                            <video muted playsinline loop>
                                 <source src="jugadas/video_arcoiris.mp4" type="video/mp4">
                             </video>
-                            <div class="play-desc">ARCOIRIS</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- TARJETA DE JUGADA 4 -->
+                <!-- CARD 4 -->
                 <div class="play-card">
                     <div class="play-card-inner">
                         <div class="play-card-front">
-                            <img src="jugadas/foto_doble_opcion.png" alt="Formación 2">
+                            <img src="jugadas/foto_doble_opcion.png">
                             <div class="play-name">DOBLE OPCION</div>
                         </div>
                         <div class="play-card-back">
-                            <video autoplay loop muted playsinline>
+                            <video muted playsinline loop>
                                 <source src="jugadas/video_doble_opcion.mp4" type="video/mp4">
                             </video>
-                            <div class="play-desc">DOBLE OPCION</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- TARJETA DE JUGADA 5 -->
+                <!-- CARD 5 -->
                 <div class="play-card">
                     <div class="play-card-inner">
                         <div class="play-card-front">
-                            <img src="jugadas/foto_reversible.png" alt="Formación 2">
+                            <img src="jugadas/foto_reversible.png">
                             <div class="play-name">SHOT</div>
                         </div>
                         <div class="play-card-back">
-                            <video autoplay loop muted playsinline>
+                            <video muted playsinline loop>
                                 <source src="jugadas/video_reversible.mp4" type="video/mp4">
                             </video>
-                            <div class="play-desc">SHOT</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- TARJETA DE JUGADA 6 -->
+                <!-- CARD 6 -->
                 <div class="play-card">
                     <div class="play-card-inner">
                         <div class="play-card-front">
-                            <img src="jugadas/foto_stops.png" alt="Formación 2">
+                            <img src="jugadas/foto_stops.png">
                             <div class="play-name">STOPS</div>
                         </div>
                         <div class="play-card-back">
-                            <video autoplay loop muted playsinline>
+                            <video muted playsinline loop>
                                 <source src="jugadas/video_stops.mp4" type="video/mp4">
                             </video>
-                            <div class="play-desc">STOPS</div>
                         </div>
                     </div>
                 </div>
@@ -128,18 +133,40 @@
             </div>
         </div>
     </div>
-        <script>
+
+    <!-- SCRIPT -->
+    <script>
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
-            document.querySelector('.overlay').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
             document.body.classList.toggle('no-scroll');
         }
 
         function closeMenu() {
             document.getElementById('sidebar').classList.remove('active');
-            document.querySelector('.overlay').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
             document.body.classList.remove('no-scroll');
         }
+
+        // 🔥 FLIP + VIDEO
+        document.querySelectorAll('.play-card').forEach(card => {
+            card.addEventListener('click', function () {
+
+                this.classList.toggle('flip');
+
+                const video = this.querySelector('video');
+
+                if (video) {
+                    if (this.classList.contains('flip')) {
+                        video.play();
+                    } else {
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                }
+            });
+        });
     </script>
+
 </body>
 </html>
