@@ -26,7 +26,7 @@ html, body {
     min-height: 100vh;
 }
 
-/* --- SIDEBAR (MENÚ LATERAL) --- */
+/* --- SIDEBAR --- */
 .sidebar {
     width: 260px;
     background-color: var(--guinda);
@@ -55,12 +55,9 @@ html, body {
     text-decoration: none;
 }
 
-.nav-item i {
-    margin-right: 15px;
-}
+.nav-item i { margin-right: 15px; }
 
-.nav-item:hover,
-.nav-item.active {
+.nav-item:hover, .nav-item.active {
     background-color: rgba(212, 163, 86, 0.2);
     border-left: 5px solid var(--oro);
 }
@@ -73,7 +70,6 @@ html, body {
     width: 100%;
 }
 
-/* HEADER */
 .header-web {
     display: flex;
     align-items: center;
@@ -104,103 +100,85 @@ html, body {
     gap: 25px;
 }
 
-/* --- TARJETAS (FLIP CARD EFFECT) --- */
+/* --- TARJETAS (FLIP CARD ENGINE) --- */
 .play-card {
+    background-color: transparent;
     width: 100%;
     aspect-ratio: 3 / 4;
-    perspective: 1000px; /* Necesario para el efecto 3D */
+    perspective: 1500px; /* Profundidad de la escena */
     cursor: pointer;
-    background-color: transparent; /* Asegura que no haya fondos extraños */
 }
 
 .play-card-inner {
+    position: relative;
     width: 100%;
     height: 100%;
-    position: relative;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* 🔥 FIX IMPORTANTE MÓVILES: Fuerza al navegador a tratar esto como un objeto 3D */
     -webkit-transform-style: preserve-3d;
 }
 
+/* Efecto de giro */
 .play-card.flip .play-card-inner {
     transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
 }
 
-/* CARAS DE LA TARJETA */
-.play-card-front,
-.play-card-back {
+.play-card-front, .play-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
+    -webkit-backface-visibility: hidden; /* IMPORTANTE: Oculta la espalda */
+    backface-visibility: hidden;
     border-radius: 15px;
     border: 3px solid var(--oro);
-    background-color: #000; /* Fondo para contener medios */
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
-
-    /* 🔥 EL FIX: Oculta la cara trasera cuando no está de frente */
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden; /* Necesario para Safari/iOS */
-    
-    /* Asegura que las caras empiecen en el mismo punto */
+    background-color: #000;
     top: 0;
     left: 0;
 }
 
-/* FRONT: Posición inicial por defecto */
+/* Cara frontal */
 .play-card-front {
-    z-index: 2; /* El front empieza arriba */
+    z-index: 2;
     transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
 }
 
-/* --- AJUSTE DE MEDIOS (IMAGEN Y VIDEO) --- */
-.play-card-front img,
+/* Cara trasera */
+.play-card-back {
+    z-index: 1;
+    transform: rotateY(180deg);
+}
+
+/* Ajuste de Medios */
+.play-card-front img, 
 .play-card-back video {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ajusta sin deformar */
-    background: #000;
-    
-    /* 🔥 FIX ADICIONAL: Evita parpadeos en el renderizado 3D */
-    -webkit-transform: translateZ(0); 
-    transform: translateZ(0);
+    object-fit: contain; /* Cambia a cover si quieres que llenen toda la tarjeta */
+    display: block;
 }
 
-/* BACK: Ya empieza girada 180 grados */
-.play-card-back {
-    z-index: 1; /* El back empieza abajo */
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-}
-
-/* NOMBRE (CONTENIDO DEL FRONT) */
+/* Estilo del Nombre de la Jugada */
 .play-name {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: rgba(99, 30, 38, 0.9);
+    background: rgba(99, 30, 38, 0.95);
     color: var(--oro);
-    padding: 12px;
-    text-align: center;
+    padding: 15px 10px;
     font-weight: bold;
     text-transform: uppercase;
-    z-index: 5;
-    
-    /* 🔥 FIX: Asegura que el texto no se "filtre" al otro lado */
+    font-size: 1.1rem;
+    border-top: 2px solid var(--oro);
+    /* Evita que se asome al girar */
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
-/* --- ELEMENTOS DE NAVEGACIÓN MÓVIL --- */
+/* --- MÓVIL Y NAVEGACIÓN --- */
 .menu-toggle {
-    display: none; /* Se activa en @media */
+    display: none;
     position: fixed;
     top: 15px;
     left: 15px;
@@ -210,7 +188,6 @@ html, body {
     border: 2px solid var(--oro);
     padding: 12px;
     border-radius: 8px;
-    font-size: 1.5rem;
 }
 
 .overlay {
@@ -226,47 +203,14 @@ html, body {
     z-index: 1500;
 }
 
-.overlay.active {
-    opacity: 1;
-    pointer-events: all;
-}
+.overlay.active { opacity: 1; pointer-events: all; }
 
-/* --- MÓVIL (RESPONSIVE) --- */
 @media (max-width: 850px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .sidebar {
-        transform: translateX(-100%);
-    }
-
-    .sidebar.active {
-        transform: translateX(0);
-    }
-
-    .main-content {
-        margin-left: 0;
-        padding: 80px 15px 20px;
-    }
-
-    .header-web {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
-
-    .header-web h1 {
-        font-size: 2.5rem;
-    }
-
-    .playbook-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-    }
+    .menu-toggle { display: block; }
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.active { transform: translateX(0); }
+    .main-content { margin-left: 0; padding: 80px 15px 20px; }
+    .header-web h1 { font-size: 2.5rem; }
 }
 
-/* --- UTILIDADES --- */
-.no-scroll {
-    overflow: hidden;
-}
+.no-scroll { overflow: hidden; }
