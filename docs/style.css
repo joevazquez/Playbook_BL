@@ -92,6 +92,7 @@ html, body {
     font-weight: 900;
     font-family: 'Impact', sans-serif;
     background: linear-gradient(to bottom, var(--negro), var(--oro));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -107,8 +108,9 @@ html, body {
 .play-card {
     width: 100%;
     aspect-ratio: 3 / 4;
-    perspective: 1000px;
+    perspective: 1000px; /* Necesario para el efecto 3D */
     cursor: pointer;
+    background-color: transparent; /* Asegura que no haya fondos extraños */
 }
 
 .play-card-inner {
@@ -117,10 +119,14 @@ html, body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* 🔥 FIX IMPORTANTE MÓVILES: Fuerza al navegador a tratar esto como un objeto 3D */
+    -webkit-transform-style: preserve-3d;
 }
 
 .play-card.flip .play-card-inner {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 /* CARAS DE LA TARJETA */
@@ -130,47 +136,66 @@ html, body {
     width: 100%;
     height: 100%;
     border-radius: 15px;
-    backface-visibility: hidden;
     border: 3px solid var(--oro);
-    background-color: #000; /* Fondo negro para centrar contenido */
+    background-color: #000; /* Fondo para contener medios */
+    
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+    /* 🔥 EL FIX: Oculta la cara trasera cuando no está de frente */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* Necesario para Safari/iOS */
+    
+    /* Asegura que las caras empiecen en el mismo punto */
+    top: 0;
+    left: 0;
 }
 
-/* FRONT: IMAGEN DE LA JUGADA */
-.play-card-front img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Centra y ajusta sin deformar */
-    background: #000;
+/* FRONT: Posición inicial por defecto */
+.play-card-front {
+    z-index: 2; /* El front empieza arriba */
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
 }
 
-/* BACK: VIDEO DE LA JUGADA */
-.play-card-back {
-    transform: rotateY(180deg);
-}
-
+/* --- AJUSTE DE MEDIOS (IMAGEN Y VIDEO) --- */
+.play-card-front img,
 .play-card-back video {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Video centrado y completo */
+    object-fit: contain; /* Ajusta sin deformar */
     background: #000;
+    
+    /* 🔥 FIX ADICIONAL: Evita parpadeos en el renderizado 3D */
+    -webkit-transform: translateZ(0); 
+    transform: translateZ(0);
 }
 
-/* ETIQUETA DE NOMBRE */
+/* BACK: Ya empieza girada 180 grados */
+.play-card-back {
+    z-index: 1; /* El back empieza abajo */
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+}
+
+/* NOMBRE (CONTENIDO DEL FRONT) */
 .play-name {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: rgba(99, 30, 38, 0.9); /* Guinda con transparencia */
+    background: rgba(99, 30, 38, 0.9);
     color: var(--oro);
     padding: 12px;
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
     z-index: 5;
+    
+    /* 🔥 FIX: Asegura que el texto no se "filtre" al otro lado */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 /* --- ELEMENTOS DE NAVEGACIÓN MÓVIL --- */
