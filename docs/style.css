@@ -171,11 +171,13 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 }
 
 /* --- GRID DE JUGADAS (Ofensa/Defensa) --- */
-.playbook-grid { 
+.playbook-grid {
+     
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 30px; /* Un poco más de espacio entre jugadas */
     align-items: start; /* Importante para que no se estiren raro si un texto es largo */
+    width: 100%; /* Añade esto */
 }
 
 .play-item {
@@ -192,6 +194,9 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     border: 1px solid #e0e0e0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     margin-top: 12px;
+    width: 100%; /* Asegura que ocupe todo el ancho de la columna del grid */
+    box-sizing: border-box; /* Para que el padding no sume al ancho total */
+    display: block; /* Asegura que no se comporte como elemento inline */
 }
 
 .play-description p {
@@ -338,3 +343,9 @@ body.no-scroll { overflow: hidden; }
 .y  { background-color: #800080 !important; }
 .z  { background-color: #008000 !important; }
 .c  { background-color: #808080 !important; }
+
+.main-content {
+    flex: 1; /* Esto obliga al contenido a ocupar todo el espacio disponible */
+    width: 100%;
+    min-width: 0; /* Evita que el contenido desborde el flex padre */
+}
