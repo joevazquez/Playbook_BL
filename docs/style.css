@@ -210,29 +210,6 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 
 .player-route:last-child { margin-bottom: 0; }
 
-/* --- CÍRCULOS DE JUGADORES --- */
-.badge-circle {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    min-width: 30px; /* Evita que se aplasten */
-    min-height: 30px;
-    border-radius: 50% !important; /* Círculo perfecto */
-    color: #ffffff !important;
-    font-weight: 900;
-    font-size: 0.8rem;
-    flex-shrink: 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Les da relieve */
-}
-
-/* Colores específicos de la jugada */
-.qb { background-color: #ff0000 !important; }
-.x  { background-color: #ff8c00 !important; }
-.y  { background-color: #800080 !important; }
-.z  { background-color: #008000 !important; }
-.c  { background-color: #808080 !important; }
 
 /* --- ESTILO DEL TEXTO --- */
 .route-text {
@@ -336,3 +313,28 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 }
 .overlay.active { display: block; }
 body.no-scroll { overflow: hidden; }
+
+
+/* --- CÍRCULOS DE JUGADORES --- */
+.badge-circle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    min-width: 30px; /* Evita que se aplasten */
+    min-height: 30px;
+    border-radius: 50% !important; /* Círculo perfecto */
+    color: #ffffff !important;
+    font-weight: 900;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Les da relieve */
+}
+
+/* Colores específicos de la jugada */
+.qb { background-color: #ff0000 !important; }
+.x  { background-color: #ff8c00 !important; }
+.y  { background-color: #800080 !important; }
+.z  { background-color: #008000 !important; }
+.c  { background-color: #808080 !important; }
