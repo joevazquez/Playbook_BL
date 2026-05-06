@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="overlay" onclick="closeMenu()"></div>
-    
-    <!-- Botón Hamburguesa -->
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <!-- BOTÓN HAMBURGUESA -->
     <button class="menu-toggle" onclick="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
     </button>
@@ -18,16 +19,12 @@
     <div class="web-container">
        <!-- SIDEBAR -->
         <div class="sidebar" id="sidebar">
-            <a href="index.html" class="nav-item active" onclick="closeMenu()">
-                <i class="fa-solid fa-house"></i> INICIO
-            </a>
-            <a href="ofensa.html" class="nav-item" onclick="closeMenu()">
-                <i class="fa-solid fa-football"></i> OFENSA
-            </a>
-            <a href="defensa.html" class="nav-item" onclick="closeMenu()">
-                <i class="fa-solid fa-shield-halved"></i> DEFENSA
-            </a>
+            <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i> INICIO</a>
+            <a href="ofensa.html" class="nav-item active"><i class="fa-solid fa-football"></i> OFENSA</a>
+            <a href="defensa.html" class="nav-item"><i class="fa-solid fa-shield"></i> DEFENSA</a>
         </div>
+
+        
         <!-- CONTENIDO PRINCIPAL -->
         <div class="main-content">
             <div class="header-web">
