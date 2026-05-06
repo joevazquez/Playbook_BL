@@ -174,7 +174,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 .playbook-grid { 
     display: grid; 
     /* Cambiado para asegurar que las tarjetas tengan un ancho mínimo y se ajusten solas */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
     gap: 25px; 
 }
 
@@ -208,9 +208,8 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 /* Ajuste para que tanto fotos como videos se vean completos sin zoom */
 .play-card-back video { 
     width: 100%; 
-    height: 300px; /* Altura fija para evitar que se vean como líneas */
-    display: block;
-    /*object-fit: contain;  Evita el recorte y el zoom[cite: 8] */
+    height: 100%; 
+    object-fit: contain; /* Evita el recorte y el zoom[cite: 8] */
     background-color: #000;
 }
 
@@ -218,11 +217,8 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     width: 100%; 
     height: 100%; 
     display: block;
-    object-fit: cover;
-    object-position: center center;
+    object-fit: contain;
     background-color: #000;
-    /* Zoom leve para eliminar las barras negras laterales de la imagen */
-    transform: scale(1.15);
 }
 
 .play-card-back { transform: rotateY(180deg); }
