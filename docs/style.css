@@ -179,7 +179,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 }
 
 .play-card {
-    height: 250px; /* ALTURA FIJA: Esto evita que se vean como líneas */
+    height: 320px; /* ALTURA FIJA: Esto evita que se vean como líneas */
     perspective: 1000px;
     cursor: pointer;
 }
@@ -217,9 +217,11 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     width: 100%; 
     height: 100%; 
     display: block;
-    object-fit: cover;        /* Llena la card completa sin barras negras */
-    object-position: center;  /* Centra el contenido visual de la jugada */
+    object-fit: cover;
+    object-position: center center;
     background-color: #000;
+    /* Zoom leve para eliminar las barras negras laterales de la imagen */
+    transform: scale(1.15);
 }
 
 .play-card-back { transform: rotateY(180deg); }
