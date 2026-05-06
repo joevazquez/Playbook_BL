@@ -179,7 +179,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 }
 
 .play-card {
-    height: 200px; /* ALTURA FIJA: Esto evita que se vean como líneas */
+    height: 320px; /* ALTURA FIJA: Esto evita que se vean como líneas */
     perspective: 1000px;
     cursor: pointer;
 }
@@ -208,7 +208,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 /* Ajuste para que tanto fotos como videos se vean completos sin zoom */
 .play-card-back video { 
     width: 100%; 
-    height: 100%; 
+    height: 310px; 
     object-fit: contain; /* Evita el recorte y el zoom[cite: 8] */
     background-color: #000;
 }
