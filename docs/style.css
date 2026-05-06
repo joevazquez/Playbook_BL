@@ -206,11 +206,19 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 }
 
 /* Ajuste para que tanto fotos como videos se vean completos sin zoom */
-.play-card-front img, 
 .play-card-back video { 
     width: 100%; 
     height: 100%; 
     object-fit: contain; /* Evita el recorte y el zoom[cite: 8] */
+    background-color: #000;
+}
+
+.play-card-front img { 
+    width: 100%; 
+    height: 100%; 
+    display: block;
+    object-fit: cover;        /* Llena la card completa sin barras negras */
+    object-position: center;  /* Centra el contenido visual de la jugada */
     background-color: #000;
 }
 
