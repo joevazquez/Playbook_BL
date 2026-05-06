@@ -10,10 +10,10 @@
 <body>
 
     <!-- OVERLAY -->
-    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    <div class="overlay" id="overlay" onclick="closemenu()"></div>
 
     <!-- BOTÓN HAMBURGUESA -->
-    <button class="menu-toggle" onclick="toggleMenu()">
+    <button class="menu-toggle" onclick="togglemenu()">
         <i class="fa-solid fa-bars"></i>
     </button>
 
@@ -29,7 +29,7 @@
         <div class="main-content">
             <!-- HEADER -->
             <div class="header-web">
-                <img src="LOGO_BL_FEM.jpeg" alt="Logo">
+                <img src="LOGO_BL_Fem.jpeg" alt="Logo">
                 <h1>OFENSA</h1>
             </div>
 
@@ -53,7 +53,7 @@
                     <div class="play-description">
                         <div class="player-route">
                             <div class="badge-circle qb">QB</div>
-                            <span class="route-text"><Em>Entrega balón al motion y espera 2 segundos y sale a un recto por el centro</Em>.</span>
+                            <span class="route-text"><em>Entrega balón al motion y espera 2 segundos y sale a un recto por el centro</em>.</span>
                         </div>
                         
                         <div class="player-route">
@@ -96,7 +96,7 @@
                     <div class="play-description">
                             <div class="player-route">
                                 <div class="badge-circle qb">QB</div>
-                                <span class="route-text"><Em>Lectura del CB con la ruta corta o larga</Em>.</span>
+                                <span class="route-text"><em>Lectura del CB con la ruta corta o larga</em>.</span>
                             </div>
                             
                             <div class="player-route">
@@ -138,7 +138,7 @@
                     <div class="play-description">
                         <div class="player-route">
                             <div class="badge-circle qb">QB</div>
-                            <span class="route-text"><Em>Entrega balón al motion y espera 2 segundos y sale a un recto por el centro</Em>.</span>
+                            <span class="route-text"><em>Entrega balón al motion y espera 2 segundos y sale a un recto por el centro</em>.</span>
                         </div>
                             
                         <div class="player-route">
@@ -182,28 +182,27 @@
                     <div class="play-description">
                         <div class="player-route">
                             <div class="badge-circle qb">QB</div>
-                            <span class="route-text"><Em>Lectura del LB y CB <strong>primera opción C</strong></Em>.</span>
+                            <span class="route-text"><em>Lectura del LB y CB <strong>primera opción C</strong></em>.</span>
                         </div>
                         
                         <div class="player-route">
                             <div class="badge-circle x">X</div>
-                               <span class="route-text">Rapido a dentro.</span>
-                            </div>
-                            
-                            <div class="player-route">
-                                <div class="badge-circle y">Y</div>
-                                <span class="route-text">Poste a <strong>7 yardas</strong>.</span>
-                            </div>
+                            <span class="route-text">Rapido a dentro.</span>
+                        </div>
+                        
+                        <div class="player-route">
+                            <div class="badge-circle y">Y</div>
+                            <span class="route-text">Poste a <strong>7 yardas</strong>.</span>
+                        </div>
 
-                            <div class="player-route">
-                                <div class="badge-circle z">Z</div>
-                                <span class="route-text">Escuadra dentro a <strong>5 yardas</strong>.</span>
-                            </div>
+                        <div class="player-route">
+                            <div class="badge-circle z">Z</div>
+                            <span class="route-text">Escuadra dentro a <strong>5 yardas</strong>.</span>
+                        </div>
 
-                            <div class="player-route">
-                                <div class="badge-circle c">C</div>
-                                <span class="route-text">Pierde 2 segundos y hace <strong>diagonal hacía afuera</strong>.</span>
-                            </div>
+                        <div class="player-route">
+                            <div class="badge-circle c">C</div>
+                           <span class="route-text">Pierde 2 segundos y hace <strong>diagonal hacía afuera</strong>.</span>
                         </div>
                     </div>
                 </div>
@@ -226,7 +225,7 @@
                     <div class="play-description">
                         <div class="player-route">
                             <div class="badge-circle qb">QB</div>
-                            <span class="route-text"><Em>Centra y sale corriendo rumbo a la banda</Em>.</span>
+                            <span class="route-text"><em>Centra y sale corriendo rumbo a la banda</em>.</span>
                         </div>
                         
                         <div class="player-route">
@@ -269,7 +268,7 @@
                     <div class="play-description">
                         <div class="player-route">
                             <div class="badge-circle qb">QB</div>
-                            <span class="route-text"><Em>Lectura del LB con el C y el Z</Em>.</span>
+                            <span class="route-text"><em>Lectura del LB con el C y el Z</em>.</span>
                         </div>
                         
                         <div class="player-route">
@@ -301,7 +300,7 @@
 
     <script>
         // --- FUNCIÓN PARA ABRIR/CERRAR MENÚ ---
-        function toggleMenu() {
+        function togglemenu() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             const menuBtn = document.querySelector('.menu-toggle');
@@ -319,7 +318,7 @@
         }
 
         // --- FUNCIÓN PARA CERRAR TODO ---
-        function closeMenu() {
+        function closemenu() {
             document.getElementById('sidebar').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
             document.body.classList.remove('no-scroll');
