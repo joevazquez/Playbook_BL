@@ -26,6 +26,24 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
+/* --- AJUSTE CLAVE: AGREGADO PARA EL BOTÓN --- */
+.menu-toggle {
+    display: none; 
+    position: fixed; 
+    top: 15px; 
+    left: 15px; 
+    z-index: 3000;
+    background: var(--guinda); 
+    color: var(--oro); 
+    border: 2px solid var(--oro);
+    padding: 10px; 
+    border-radius: 8px; 
+    font-size: 1.2rem; 
+    cursor: pointer;
+}
+
+.sidebar.active { transform: translateX(0); } /* Necesario para que el JS funcione */
+
 .nav-item {
     padding: 15px; margin: 10px 0; display: flex; align-items: center;
     font-weight: bold; text-transform: uppercase; border-radius: 8px;
@@ -93,9 +111,27 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 
 /* --- MÓVIL --- */
 @media (max-width: 850px) {
+    .menu-toggle { display: block; } /* Mostrar botón en móvil */
     .sidebar { transform: translateX(-100%); }
-    .main-content { margin-left: 0; padding: 20px; }
+    .main-content { margin-left: 0; padding: 70px 20px 20px 20px; } /* Más padding arriba para que el botón no estorbe */
     .header-web { flex-direction: column; text-align: center; }
     .header-web h1 { font-size: 3rem; }
     .playbook-grid { grid-template-columns: 1fr; }
 }
+
+/* --- EXTRA PARA EL OVERLAY --- */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1500;
+}
+.overlay.active { 
+    display: block; 
+}
+body.no-scroll { 
+    overflow: hidden; 
+}
+
+body.no-scroll { overflow: hidden; }
