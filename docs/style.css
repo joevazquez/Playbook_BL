@@ -179,11 +179,12 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 }
 
 .play-card {
-    height: 300px; 
+    height: 280px; 
     perspective: 1000px;
     cursor: pointer;
-    overflow: hidden; /* Importante para que el scale no se salga de los bordes */
+    overflow: hidden; /* Corta el exceso del zoom para que no se salga de la tarjeta */
     border-radius: 15px;
+    border: 3px solid var(--oro);
 }
 
 .play-card-inner { 
@@ -221,26 +222,28 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 .play-card-front img {
     width: 100%;
     height: 100%;
-    /* Cambiamos 'contain' por 'cover' para que la imagen sature el espacio */
-    /* Pero usamos 'scale' para que no se corte lo importante */
-    object-fit: cover; 
-    object-position: center; /* Centra el diagrama */
-    transform: scale(1.1); /* Hace un pequeño zoom interno para eliminar bordes vacíos de la foto */
-    background-color: #000;
+    /* Usamos 'contain' pero con un truco de escala */
+    object-fit: contain; 
+    object-position: center;
+    /* Este zoom (1.2) elimina los márgenes blancos que tienen tus imágenes originales */
+    transform: scale(1.2); 
+    transition: transform 0.3s ease;
+    padding: 10px;
 }
 
 .play-card-back { transform: rotateY(180deg); }
 
 .play-name {
-    position: relative; /* Cambiado de absolute a relative */
-    width: 100%; 
-    background: var(--guinda); /* Fondo guinda sólido */
-    color: var(--oro); 
-    padding: 12px; 
-    text-align: center; 
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(99, 30, 38, 0.95); /* Guinda con opacidad alta */
+    color: var(--oro);
+    padding: 8px;
+    text-align: center;
     font-weight: bold;
-    font-size: 1.1rem;
-    border-top: 2px solid var(--oro); /* Línea divisoria elegante */
+    z-index: 5;
+    border-top: 1px solid var(--oro);
 }
 
 
