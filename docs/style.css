@@ -187,11 +187,11 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 
 .play-description {
     background: #ffffff;
-    border-radius: 10px;
-    padding: 15px;
-    border-left: 5px solid var(--guinda);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 10; /* Para asegurar que se vea por encima de cualquier fondo */
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 12px;
 }
 
 .play-description p {
@@ -201,8 +201,50 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     margin: 0;
 }
 
-.play-description strong {
+.player-route {
+    display: flex;
+    align-items: flex-start; /* Alinea al inicio si el texto es largo */
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.player-route:last-child { margin-bottom: 0; }
+
+/* --- CÍRCULOS DE JUGADORES --- */
+.badge-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%; /* Hace que sea un círculo perfecto */
+    color: white;
+    font-weight: 900;
+    font-size: 0.85rem;
+    flex-shrink: 0; /* Evita que el círculo se aplaste */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+}
+
+/* Colores asignados */
+.qb { background-color: #ff0000; } /* Rojo */
+.x  { background-color: #ff8c00; } /* Naranja */
+.y  { background-color: #800080; } /* Morado */
+.z  { background-color: #008000; } /* Verde */
+.c  { background-color: #808080; } /* Gris */
+
+/* --- ESTILO DEL TEXTO --- */
+.route-text {
+    color: #2c3e50;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    font-weight: 500;
+    padding-top: 4px; /* Centra visualmente el texto con el círculo */
+}
+
+.route-text strong {
     color: var(--guinda);
+    font-weight: 700;
 }
 
 .play-card {
