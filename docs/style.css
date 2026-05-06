@@ -174,7 +174,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 .playbook-grid { 
     display: grid; 
     /* Cambiado para asegurar que las tarjetas tengan un ancho mínimo y se ajusten solas */
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
     gap: 25px; 
 }
 
