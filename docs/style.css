@@ -208,7 +208,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 /* Ajuste para que tanto fotos como videos se vean completos sin zoom */
 .play-card-back video { 
     width: 100%; 
-    height: 310px; 
+    height: 90%; 
     object-fit: contain; /* Evita el recorte y el zoom[cite: 8] */
     background-color: #000;
 }
