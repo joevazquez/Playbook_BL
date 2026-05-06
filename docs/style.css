@@ -179,9 +179,11 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 }
 
 .play-card {
-    height: 350px; /* ALTURA FIJA: Esto evita que se vean como líneas */
+    height: 300px; 
     perspective: 1000px;
     cursor: pointer;
+    overflow: hidden; /* Importante para que el scale no se salga de los bordes */
+    border-radius: 15px;
 }
 
 .play-card-inner { 
@@ -218,10 +220,13 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 
 .play-card-front img {
     width: 100%;
-    flex-grow: 1; /* La imagen toma todo el espacio de arriba */
-    object-fit: contain; /* Muestra la jugada completa sin cortes */
+    height: 100%;
+    /* Cambiamos 'contain' por 'cover' para que la imagen sature el espacio */
+    /* Pero usamos 'scale' para que no se corte lo importante */
+    object-fit: cover; 
+    object-position: center; /* Centra el diagrama */
+    transform: scale(1.1); /* Hace un pequeño zoom interno para eliminar bordes vacíos de la foto */
     background-color: #000;
-    padding: 10px; /* Un poco de aire para que no pegue con los bordes */
 }
 
 .play-card-back { transform: rotateY(180deg); }
