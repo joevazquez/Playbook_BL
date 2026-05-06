@@ -6,26 +6,13 @@
     --blanco: #ffffff;
 }
 
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-    font-family: 'Segoe UI', sans-serif; 
-}
-
-html, body { 
-    overflow-x: hidden; 
-    background-color: var(--crema); 
-    color: var(--negro); 
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+html, body { overflow-x: hidden; background-color: var(--crema); color: var(--negro); }
 
 /* --- ESTRUCTURA --- */
-.web-container { 
-    display: flex; 
-    min-height: 100vh; 
-}
+.web-container { display: flex; min-height: 100vh; }
 
-/* --- SIDEBAR (ESCRITORIO) --- */
+/* --- SIDEBAR --- */
 .sidebar {
     width: 260px;
     background-color: var(--guinda);
@@ -35,13 +22,11 @@ html, body {
     padding: 20px;
     position: fixed;
     height: 100vh;
-    left: 0; 
-    top: 0; 
-    z-index: 2000;
+    left: 0; top: 0; z-index: 2000;
     transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* --- BOTÓN HAMBURGUESA (OCULTO EN PC) --- */
+/* --- AJUSTE CLAVE: AGREGADO PARA EL BOTÓN --- */
 .menu-toggle {
     display: none; 
     position: fixed; 
@@ -57,54 +42,24 @@ html, body {
     cursor: pointer;
 }
 
-/* --- OVERLAY (OCULTO EN PC) --- */
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 1500;
-}
+.sidebar.active { transform: translateX(0); } /* Necesario para que el JS funcione */
 
-/* --- NAV ITEMS --- */
 .nav-item {
-    padding: 15px; 
-    margin: 10px 0; 
-    display: flex; 
-    align-items: center;
-    font-weight: bold; 
-    text-transform: uppercase; 
-    border-radius: 8px;
-    transition: all 0.25s ease; 
-    color: var(--oro); 
-    text-decoration: none;
+    padding: 15px; margin: 10px 0; display: flex; align-items: center;
+    font-weight: bold; text-transform: uppercase; border-radius: 8px;
+    transition: all 0.25s ease; color: var(--oro); text-decoration: none;
 }
 
-.nav-item i { 
-    margin-right: 15px; 
-    font-size: 1.2rem; 
-    width: 25px; 
-    text-align: center; 
-}
+.nav-item i { margin-right: 15px; font-size: 1.2rem; width: 25px; text-align: center; }
 
+/* Estado activo: Solo se verá resaltado el que tenga la clase .active */
 .nav-item:hover, .nav-item.active { 
     background-color: rgba(212, 163, 86, 0.2); 
     border-left: 5px solid var(--oro); 
     transform: scale(1.02); 
 }
 
-/* --- CONTENIDO PRINCIPAL --- */
-.main-content { 
-    flex: 1; 
-    margin-left: 260px; /* Margen para el sidebar en PC */
-    padding: 40px; 
-    width: 100%; 
-}
-
-/* --- SECCIÓN BIENVENIDA --- */
+/* --- SECCIÓN BIENVENIDA (RESTAURADA) --- */
 .welcome-section {
     background: var(--blanco);
     padding: 30px;
@@ -117,144 +72,66 @@ html, body {
 .welcome-section p { margin-bottom: 10px; line-height: 1.6; font-size: 1.1rem; }
 
 /* --- HEADER Y TITULO --- */
-.header-web { 
-    display: flex; 
-    align-items: center; 
-    margin-bottom: 40px; 
-    gap: 30px; 
-}
-.header-web img { 
-    width: 150px; 
-    border-radius: 15px; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
-}
+.header-web { display: flex; align-items: center; margin-bottom: 40px; gap: 30px; }
+.header-web img { width: 150px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 .header-web h1 {
-    font-size: 5.5rem; 
-    font-weight: 900; 
-    text-transform: uppercase;
-    font-family: 'Impact', 'Arial Black', sans-serif; 
-    color: var(--guinda);
-    line-height: 0.9; 
-    letter-spacing: 2px;
+    font-size: 5.5rem; font-weight: 900; text-transform: uppercase;
+    font-family: 'Impact', 'Arial Black', sans-serif; color: var(--guinda);
+    line-height: 0.9; letter-spacing: 2px;
     text-shadow: 1px 1px 0px var(--oro), 2px 2px 0px var(--oro), 3px 3px 0px var(--oro);
 }
 
 /* --- REGLAMENTO --- */
-.rules-container { 
-    background-color: var(--guinda); 
-    padding: 40px; 
-    border-radius: 25px; 
-    color: var(--blanco); 
-}
+.rules-container { background-color: var(--guinda); padding: 40px; border-radius: 25px; color: var(--blanco); }
 .rule-card-web {
-    background: var(--blanco); 
-    color: var(--negro); 
-    margin-bottom: 20px;
-    padding: 25px; 
-    border-radius: 15px; 
-    display: flex; 
-    align-items: center; 
-    gap: 25px;
-    border-left: 8px solid var(--oro); 
-    box-shadow: 4px 4px 0px rgba(212, 163, 86, 0.4);
+    background: var(--blanco); color: var(--negro); margin-bottom: 20px;
+    padding: 25px; border-radius: 15px; display: flex; align-items: center; gap: 25px;
+    border-left: 8px solid var(--oro); box-shadow: 4px 4px 0px rgba(212, 163, 86, 0.4);
 }
 .rule-number {
-    background: var(--oro); 
-    color: var(--guinda); 
-    min-width: 45px; 
-    height: 45px;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    border-radius: 50%; 
-    font-weight: 900;
+    background: var(--oro); color: var(--guinda); min-width: 45px; height: 45px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; font-weight: 900;
 }
 
-/* --- TARJETAS PLAYBOOK --- */
-.playbook-grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-}
-.play-card { 
-    width: 100%; 
-    height: 300px; 
-    perspective: 1000px; 
-    cursor: pointer; 
-}
-.play-card-inner { 
-    position: relative; 
-    width: 100%; 
-    height: 100%; 
-    transition: transform 0.8s; 
-    transform-style: preserve-3d; 
-}
-.play-card.flip .play-card-inner { 
-    transform: rotateY(180deg); 
-}
+/* --- TARJETAS (SIN ZOOM) --- */
+.playbook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.play-card { width: 100%; height: 300px; perspective: 1000px; cursor: pointer; }
+.play-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
+.play-card.flip .play-card-inner { transform: rotateY(180deg); }
 .play-card-front, .play-card-back {
-    position: absolute; 
-    width: 100%; 
-    height: 100%; 
-    backface-visibility: hidden;
-    border-radius: 15px; 
-    border: 3px solid var(--oro); 
-    overflow: hidden; 
-    background: #1a1a1a;
+    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+    border-radius: 15px; border: 3px solid var(--oro); overflow: hidden; background: #1a1a1a;
 }
-.play-card-front img, .play-card-back video { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; 
-}
+.play-card-front img, .play-card-back video { width: 100%; height: 100%; object-fit: contain; }
 .play-name {
-    position: absolute; 
-    bottom: 0; 
-    width: 100%; 
-    background: rgba(99, 30, 38, 0.9);
-    color: var(--oro); 
-    padding: 10px; 
-    text-align: center; 
-    font-weight: bold;
+    position: absolute; bottom: 0; width: 100%; background: rgba(99, 30, 38, 0.9);
+    color: var(--oro); padding: 10px; text-align: center; font-weight: bold;
 }
 
-/* --- MÓVIL (MAX 850PX) --- */
+/* --- MÓVIL --- */
 @media (max-width: 850px) {
-    .menu-toggle { 
-        display: block; /* Solo visible en móvil */
-    }
-    
-    .sidebar { 
-        transform: translateX(-100%); /* Escondido por defecto en móvil */
-    }
-    
-    .sidebar.active { 
-        transform: translateX(0); /* Se desliza al activar */
-    }
-
-    .overlay.active { 
-        display: block; 
-    }
-
-    .main-content { 
-        margin-left: 0; 
-        padding: 80px 20px 20px 20px; /* Padding superior para el botón hamburguesa */
-    }
-
-    .header-web { 
-        flex-direction: column; 
-        text-align: center; 
-    }
-    
-    .header-web h1 { 
-        font-size: 3rem; 
-    }
-    
-    .playbook-grid { 
-        grid-template-columns: 1fr; 
-    }
-    
-    body.no-scroll { 
-        overflow: hidden; 
-    }
+    .menu-toggle { display: block; } /* Mostrar botón en móvil */
+    .sidebar { transform: translateX(-100%); }
+    .main-content { margin-left: 0; padding: 70px 20px 20px 20px; } /* Más padding arriba para que el botón no estorbe */
+    .header-web { flex-direction: column; text-align: center; }
+    .header-web h1 { font-size: 3rem; }
+    .playbook-grid { grid-template-columns: 1fr; }
 }
+
+/* --- EXTRA PARA EL OVERLAY --- */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1500;
+}
+.overlay.active { 
+    display: block; 
+}
+body.no-scroll { 
+    overflow: hidden; 
+}
+
+body.no-scroll { overflow: hidden; }
