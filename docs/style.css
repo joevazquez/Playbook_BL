@@ -179,7 +179,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 }
 
 .play-card {
-    height: 320px; /* ALTURA FIJA: Esto evita que se vean como líneas */
+    height: 200px; /* ALTURA FIJA: Esto evita que se vean como líneas */
     perspective: 1000px;
     cursor: pointer;
 }
