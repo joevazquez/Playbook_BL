@@ -181,21 +181,23 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 .play-item {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espacio entre la tarjeta y el texto */
+    gap: 15px; /* Espacio real entre la tarjeta y la descripción */
+    margin-bottom: 30px;
 }
 
 .play-description {
     background: #ffffff;
     border-radius: 10px;
-    padding: 12px;
-    border-left: 4px solid var(--guinda); /* Detalle con el color de Barra Libre */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 15px;
+    border-left: 5px solid var(--guinda);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 10; /* Para asegurar que se vea por encima de cualquier fondo */
 }
 
 .play-description p {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
     margin: 0;
 }
 
@@ -210,6 +212,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     overflow: hidden; /* Corta el exceso del zoom para que no se salga de la tarjeta */
     border-radius: 15px;
     border: 3px solid var(--oro);
+    position: relative; /* Para que no flote sobre la descripción */
 }
 
 .play-card-inner { 
