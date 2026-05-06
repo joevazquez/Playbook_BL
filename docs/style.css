@@ -94,16 +94,43 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     border-radius: 50%; font-weight: 900;
 }
 
+<<<<<<< HEAD
 /* --- TARJETAS (SIN ZOOM) --- */
 .playbook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .play-card { width: 100%; height: 300px; perspective: 1000px; cursor: pointer; }
+=======
+/* --- GRID Y TARJETAS AJUSTADAS (3 columnas Web / 1 columna Móvil) --- */
+.playbook-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 por renglón */
+    gap: 20px;
+}
+
+.play-card { width: 100%; height: 280px; perspective: 1000px; cursor: pointer; }
+>>>>>>> parent of e6d46c4 (upgrade)
 .play-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
 .play-card.flip .play-card-inner { transform: rotateY(180deg); }
 .play-card-front, .play-card-back {
     position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+<<<<<<< HEAD
     border-radius: 15px; border: 3px solid var(--oro); overflow: hidden; background: #1a1a1a;
 }
 .play-card-front img, .play-card-back video { width: 100%; height: 100%; object-fit: contain; }
+=======
+    border-radius: 15px; border: 3px solid var(--oro); overflow: hidden;
+    background: #000; /* Fondo negro para eliminar espacios blancos */
+}
+
+.play-card-front img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Llena toda la tarjeta */
+}
+
+.play-card-back { transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; }
+.play-card-back video { width: 100%; height: 100%; object-fit: cover; }
+
+>>>>>>> parent of e6d46c4 (upgrade)
 .play-name {
     position: absolute; bottom: 0; width: 100%; background: rgba(99, 30, 38, 0.9);
     color: var(--oro); padding: 10px; text-align: center; font-weight: bold;
@@ -111,9 +138,26 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 
 /* --- MÓVIL --- */
 @media (max-width: 850px) {
+<<<<<<< HEAD
     .menu-toggle { display: block; } /* Mostrar botón en móvil */
     .sidebar { transform: translateX(-100%); }
     .main-content { margin-left: 0; padding: 70px 20px 20px 20px; } /* Más padding arriba para que el botón no estorbe */
+=======
+    .menu-toggle { display: block; }
+    .sidebar { transform: translateX(-100%); width: 260px; }
+    .sidebar.active { transform: translateX(0); }
+    .overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5); opacity: 0; pointer-events: none;
+        transition: 0.3s; z-index: 1500;
+    }
+    .overlay.active { opacity: 1; pointer-events: all; }
+    .main-content { margin-left: 0; padding: 80px 15px 20px 15px; }
+    
+    .playbook-grid { grid-template-columns: 1fr; } /* 1 por renglón en móvil */
+    .play-card { height: 250px; }
+
+>>>>>>> parent of e6d46c4 (upgrade)
     .header-web { flex-direction: column; text-align: center; }
     .header-web h1 { font-size: 3rem; }
     .playbook-grid { grid-template-columns: 1fr; }
