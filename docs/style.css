@@ -97,6 +97,17 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     margin-top: 20px;
 }
 
+.welcome-section p {
+    margin-bottom: 20px; /* Ajusta este número para más o menos espacio */
+    line-height: 1.6;    /* Esto separa las líneas dentro de un mismo párrafo */
+}
+
+/* Espacio extra después del título */
+.welcome-section h2 {
+    margin-bottom: 25px;
+    color: var(--guinda);
+}
+
 /*
 .menu-toggle {
     transition: opacity 0.3s ease;
