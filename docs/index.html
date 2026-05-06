@@ -122,48 +122,57 @@
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
+            const menuBtn = document.querySelector('.menu-toggle');
             
             sidebar.classList.toggle('active');
             overlay.classList.toggle('active');
             document.body.classList.toggle('no-scroll');
+            
+            // Cambio dinámico: Ocultar el botón si el menú está abierto
+            if (sidebar.classList.contains('active')) {
+                menuBtn.classList.add('hidden');
+            } else {
+                menuBtn.classList.remove('hidden');
+            }
         }
 
-        // --- FUNCIÓN PARA CERRAR AL TOCAR FUERA O EN EL OVERLAY ---
+        // --- FUNCIÓN PARA CERRAR TODO ---
         function closeMenu() {
             document.getElementById('sidebar').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
             document.body.classList.remove('no-scroll');
+            
+            // Asegurar que el botón de hamburguesa vuelva a aparecer
+            const menuBtn = document.querySelector('.menu-toggle');
+            if (menuBtn) menuBtn.classList.remove('hidden');
         }
 
-        // --- LÓGICA DE LAS TARJETAS (Giro y Video) ---
+        // --- LÓGICA DE LAS TARJETAS (Flip y Video optimizado) ---
         document.querySelectorAll('.play-card').forEach(card => {
-            let startX, startY, isScrolling;
+            let isScrolling = false;
+            let startY = 0;
 
-            // Detectar inicio de toque para no girar la carta si solo quieres hacer scroll
+            // Mejoramos la detección de scroll para evitar giros accidentales
             card.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
                 isScrolling = false;
             }, { passive: true });
 
             card.addEventListener('touchmove', (e) => {
-                let diffX = Math.abs(e.touches[0].clientX - startX);
-                let diffY = Math.abs(e.touches[0].clientY - startY);
-                // Si el movimiento es más vertical que horizontal, es un scroll
-                if (diffY > diffX) isScrolling = true;
+                const moveY = Math.abs(e.touches[0].clientY - startY);
+                if (moveY > 10) isScrolling = true; // Si se mueve más de 10px verticalmente, es scroll
             }, { passive: true });
 
             card.addEventListener('click', function () {
-                // Si el usuario estaba haciendo scroll, no girar la carta
-                if (isScrolling) return;
+                if (isScrolling) return; // No girar si el usuario solo está bajando en la página[cite: 5]
 
                 this.classList.toggle('flip');
                 const video = this.querySelector('video');
 
                 if (video) {
                     if (this.classList.contains('flip')) {
-                        // Esperar un poco a que la carta gire para dar play
-                        setTimeout(() => video.play(), 100);
+                        // Tiempo de espera de 200ms para que la animación se vea fluida
+                        setTimeout(() => video.play(), 200);
                     } else {
                         video.pause();
                         video.currentTime = 0;
