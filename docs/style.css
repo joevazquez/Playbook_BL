@@ -173,9 +173,34 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 /* --- GRID DE JUGADAS (Ofensa/Defensa) --- */
 .playbook-grid { 
     display: grid; 
-    /* Cambiado para asegurar que las tarjetas tengan un ancho mínimo y se ajusten solas */
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-    gap: 25px; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; /* Un poco más de espacio entre jugadas */
+    align-items: start; /* Importante para que no se estiren raro si un texto es largo */
+}
+
+.play-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre la tarjeta y el texto */
+}
+
+.play-description {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 12px;
+    border-left: 4px solid var(--guinda); /* Detalle con el color de Barra Libre */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.play-description p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #444;
+    margin: 0;
+}
+
+.play-description strong {
+    color: var(--guinda);
 }
 
 .play-card {
