@@ -63,6 +63,10 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.rule-card-web:hover, .nav-item.active {  
+    border-left: 5px solid var(--oro); 
+}
+
 /* Círculo dorado con el número */
 .rule-number {
     background-color: #d4a373; /* Dorado/café claro */
