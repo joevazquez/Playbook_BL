@@ -371,3 +371,27 @@ body.no-scroll { overflow: hidden; }
     width: 100%;
     min-width: 0; /* Evita que el contenido desborde el flex padre */
 }
+
+/* --- CÍRCULOS DE JUGADORES --- */
+.badge-circle-defensa {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    min-width: 30px; /* Evita que se aplasten */
+    min-height: 30px;
+    border-radius: 50% !important; /* Círculo perfecto */
+    color: #ffffff !important;
+    font-weight: 900;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Les da relieve */
+}
+
+/* Colores específicos de la jugada */
+.r { background-color: #ff0000 !important; }
+.cb1  { background-color: #ff8c00 !important; }
+.cb2  { background-color: #800080 !important; }
+.lb  { background-color: #008000 !important; }
+.s  { background-color: #808080 !important; }
