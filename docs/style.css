@@ -67,9 +67,22 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
     transition: all 0.3s ease; 
 }
 
-.rule-card-web:hover {  
+.rule-card-web:hover {
     border-left: 5px solid var(--oro); 
-    background-color: #f9f9f9; /* Opcional: un ligero cambio de fondo */
+    background-color: #fffdf9; /* Fondo crema muy ligero al pasar el mouse */
+    transform: translateX(5px); /* Desplazamiento sutil hacia la derecha */
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.15);
+}
+
+.rule-content ul {
+    margin-left: 20px;
+    margin-top: 10px;
+    list-style-type: disc;
+}
+
+.rule-content li {
+    margin-bottom: 5px;
+    color: #444;
 }
 
 /* Círculo dorado con el número */
