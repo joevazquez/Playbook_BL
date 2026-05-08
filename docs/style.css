@@ -390,8 +390,8 @@ body.no-scroll { overflow: hidden; }
 }
 
 /* Colores específicos de la jugada */
-.r { background-color: #ff0000 !important; }
-.cb1  { background-color: #ff8c00 !important; }
-.cb2  { background-color: #800080 !important; }
-.lb  { background-color: #008000 !important; }
-.s  { background-color: #808080 !important; }
+.r { background-color: #d11212 !important; }
+.cb1 { background-color: #559e54 !important; }
+.cb2 { background-color: #2b77b3 !important; }
+.lb { background-color: #5b5b5b !important; }
+.s { background-color: #1a7470 !important; }
