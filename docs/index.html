@@ -20,7 +20,16 @@
        <!-- SIDEBAR -->
         <div class="sidebar" id="sidebar">
             <a href="index.html" class="nav-item" active><i class="fa-solid fa-house"></i> INICIO</a>
-            <a href="ofensa.html" class="nav-item"><i class="fa-solid fa-football"></i> OFENSA</a>
+            <!-- Item con Submenú -->
+            <div class="nav-dropdown">
+                    <a href="javascript:void(0)" class="nav-item" onclick="toggleSubmenu(event)">
+                    <i class="fa-solid fa-football"></i> OFENSA <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </a>
+                <div class="submenu" id="submenu-ofensa">
+                    <a href="ofensa-varonil.html" class="submenu-item">Varonil</a>
+                    <a href="ofensa-femenil.html" class="submenu-item">Femenil</a>
+                </div>
+            </div>
             <a href="defensa.html" class="nav-item"><i class="fa-solid fa-shield"></i> DEFENSA</a>
         </div>
 
