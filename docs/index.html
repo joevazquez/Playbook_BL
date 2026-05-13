@@ -195,7 +195,9 @@
         // --- FUNCIÓN PARA DESPLEGAR SUBMENÚ DE OFENSA ---
         function toggleSubmenu(event) {
             event.preventDefault(); // Evita que el enlace intente recargar la página
-            
+            event.preventDefault();
+            alert("¡Botón presionado!");
+
             const submenu = document.getElementById('submenu-ofensa');
             const arrow = event.currentTarget.querySelector('.arrow-icon');
 
