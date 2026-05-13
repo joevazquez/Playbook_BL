@@ -395,3 +395,44 @@ body.no-scroll { overflow: hidden; }
 .cb2 { background-color: #2b77b3 !important; }
 .lb { background-color: #5b5b5b !important; }
 .s { background-color: #1a7470 !important; }
+
+/* Contenedor del submenú */
+.submenu {
+    display: none; /* Oculto por defecto */
+    flex-direction: column; /* Alinea los items uno debajo del otro */
+    background: rgba(0, 0, 0, 0.15); /* Fondo sutil para dar profundidad */
+    padding-left: 50px; /* Alineación con el texto de arriba */
+    margin-bottom: 10px;
+}
+
+.submenu.show {
+    display: flex; /* Se muestra como columna al activar */
+}
+
+/* Estilo para "Varonil" y "Femenil" */
+.submenu-item {
+    display: block;
+    padding: 10px 0;
+    color: #f1c40f; /* El color dorado de tus iconos */
+    text-decoration: none; /* Quita el subrayado azul */
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.submenu-item:hover {
+    color: #ffffff; /* Brilla al pasar el mouse */
+}
+
+/* Ajuste para que la flecha no rompa la línea */
+.nav-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
