@@ -191,6 +191,24 @@
                 }
             });
         });
+
+        // --- FUNCIÓN PARA DESPLEGAR SUBMENÚ DE OFENSA ---
+        function toggleSubmenu(event) {
+            event.preventDefault(); // Evita que el enlace intente recargar la página
+            
+            const submenu = document.getElementById('submenu-ofensa');
+            const arrow = event.currentTarget.querySelector('.arrow-icon');
+
+            // Alternar la clase 'show' para mostrar/ocultar el submenú
+            if (submenu) {
+                submenu.classList.toggle('show');
+            }
+
+            // Alternar la clase 'rotate' para girar la flechita
+            if (arrow) {
+                arrow.classList.toggle('rotate');
+            }
+        }
     </script>
 </body>
 </html>
