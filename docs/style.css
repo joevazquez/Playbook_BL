@@ -412,8 +412,8 @@ body.no-scroll { overflow: hidden; }
 /* Estilo para "Varonil" y "Femenil" */
 .submenu-item {
     display: block;
-    padding: 10px 0;
-    color: #f1c40f; /* El color dorado de tus iconos */
+    padding: 10px 15px;
+    color: var(--oro);
     text-decoration: none; /* Quita el subrayado azul */
     font-size: 0.9rem;
     font-weight: bold;
@@ -421,8 +421,10 @@ body.no-scroll { overflow: hidden; }
     transition: 0.3s;
 }
 
-.submenu-item:hover {
-    color: #ffffff; /* Brilla al pasar el mouse */
+.submenu-item.active-sub {
+    color: var(--blanco);
+    border-left: 2px solid var(--oro);
+    padding-left: 10px; /* Un pequeño empuje visual */
 }
 
 /* Ajuste para que la flecha no rompa la línea */
