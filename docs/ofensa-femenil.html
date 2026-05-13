@@ -21,7 +21,23 @@
         <!-- SIDEBAR -->
         <div class="sidebar" id="sidebar">
             <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i> INICIO</a>
-            <a href="ofensa.html" class="nav-item active"><i class="fa-solid fa-football"></i> OFENSA</a>
+
+            <!-- Botón de Ofensa (Sin el div nav-dropdown) -->
+            <!-- Cambia el botón de Ofensa por este -->
+            <a href="javascript:void(0)" class="nav-item active" onclick="toggleSubmenu(event)">
+                <div class="nav-item-content">
+                    <i class="fa-solid fa-football"></i>
+                    <span>OFENSA</span>
+                </div>
+                <i class="fa-solid fa-chevron-down arrow-icon"></i>
+            </a>
+            
+            <!-- Submenú -->
+            <div class="submenu" id="submenu-ofensa">
+                <a href="ofensa-varonil.html" class="submenu-item">Varonil</a>
+                <a href="ofensa-femenil.html" class="submenu-item">Femenil</a>
+            </div>
+
             <a href="defensa.html" class="nav-item"><i class="fa-solid fa-shield"></i> DEFENSA</a>
         </div>
 
@@ -361,6 +377,24 @@
                 }
             });
         });
+
+        // --- FUNCIÓN PARA DESPLEGAR SUBMENÚ DE OFENSA ---
+        function toggleSubmenu(event) {
+            event.preventDefault();
+
+            const submenu = document.getElementById('submenu-ofensa');
+            const arrow = event.currentTarget.querySelector('.arrow-icon');
+
+            // Alternar la clase 'show' para mostrar/ocultar el submenú
+            if (submenu) {
+                submenu.classList.toggle('show');
+            }
+
+            // Alternar la clase 'rotate' para girar la flechita
+            if (arrow) {
+                arrow.classList.toggle('rotate');
+            }
+        }
     </script>
 
 </body>
