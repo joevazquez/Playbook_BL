@@ -170,7 +170,7 @@ html, body { overflow-x: hidden; background-color: var(--crema); color: var(--ne
 }
 
 .nav-item {
-    padding: 15px; margin: 10px 0; display: flex; align-items: center;
+    padding: 15px; margin: 10px 0; display: flex; justify-content: flex-start; align-items: center;
     font-weight: bold; text-transform: uppercase; border-radius: 8px;
     transition: all 0.25s ease; color: var(--oro); text-decoration: none;
 }
@@ -396,45 +396,39 @@ body.no-scroll { overflow: hidden; }
 .lb { background-color: #5b5b5b !important; }
 .s { background-color: #1a7470 !important; }
 
-/* Contenedor del submenú */
+/* --- TUS AJUSTES DE SUBMENÚ --- */
 .submenu {
-    display: none; /* Oculto por defecto */
-    flex-direction: column; /* Alinea los items uno debajo del otro */
-    background: rgba(0, 0, 0, 0.15); /* Fondo sutil para dar profundidad */
-    padding-left: 50px; /* Alineación con el texto de arriba */
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.15);
+    /* Ajusta este padding para que las letras 'Varonil' 
+       se alineen exactamente debajo de 'Ofensa' */
+    padding-left: 55px; 
     margin-bottom: 10px;
 }
 
 .submenu.show {
-    display: flex; /* Se muestra como columna al activar */
+    display: flex;
 }
 
-/* Estilo para "Varonil" y "Femenil" */
 .submenu-item {
     display: block;
-    padding: 10px 15px;
+    padding: 8px 0; /* Espaciado vertical entre opciones */
     color: var(--oro);
-    text-decoration: none; /* Quita el subrayado azul */
+    text-decoration: none;
     font-size: 0.9rem;
     font-weight: bold;
     text-transform: uppercase;
     transition: 0.3s;
 }
 
-.submenu-item.active-sub {
+.submenu-item:hover {
     color: var(--blanco);
-    border-left: 2px solid var(--oro);
-    padding-left: 10px; /* Un pequeño empuje visual */
 }
 
-/* Ajuste para que la flecha no rompa la línea */
-.nav-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.rotate {
-    transform: rotate(180deg);
+/* Flecha: Aseguramos que no se mueva de su lugar */
+.arrow-icon {
+    transition: transform 0.3s ease;
+    width: 20px;
+    text-align: center;
 }
